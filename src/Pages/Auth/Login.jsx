@@ -1,6 +1,7 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import React from "react";
 import { useNavigate } from "react-router";
+import logo from "../../assets/logo.png";
 
 import "./style.css";
 const Login = () => {
@@ -11,58 +12,32 @@ const Login = () => {
   const navigate = useNavigate();
 
   return (
-    <div
-      className="   "
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
-
-        height: "100vh",
-      }}
-    >
-      <div className="bgImg"></div>
-      <div
-        style={
-          {
-            // position: "relative",
-          }
-        }
-      >
+    <div className="flex justify-center items-center w-screen h-screen">
+      <div>
         <Form
           name="normal_login"
-          className="login-form backdrop-blur-lg bg-white/70"
+          className="login-form bg-[#FEFEFECC] border rounded-2xl px-[150px] py-[100px] w-[686px] shadow-soft"
           initialValues={{
-            remember: true,
-          }}
-          style={{
-            width: "630px",
-
-            borderRadius: "12px",
-            padding: "90px 57px",
-            position: "relative",
-            zIndex: 100,
+            remember: false,
           }}
           onFinish={onFinish}
         >
-          <h1
-            style={{
-              fontSize: "32px",
-              color: "black",
-              textAlign: "center",
-              fontWeight: 500,
-            }}
-          >
-            Login in to Account
-          </h1>
-          <p className="text-lg py-6 text-center">
-            Please enter your email and password to continue
-          </p>
+          <div className="flex justify-center">
+            <img
+              className="w-[171px] h-[65px]"
+              src={logo}
+              alt="logo of the website"
+            />
+          </div>
+          <h3 className="text-2xl text-[#333333] font-semibold leading-8 text-center pt-10 pb-6">
+            Log in to your account
+          </h3>
+
           <div style={{ marginBottom: "24px" }}>
             <label
               htmlFor="email"
-              style={{ display: "block", marginBottom: "5px" }}
+              className="text-base font-medium leading-6 text-[#636363]"
+              style={{ display: "block", marginBottom: "6px" }}
             >
               {" "}
               Email{" "}
@@ -79,13 +54,13 @@ const Login = () => {
               ]}
             >
               <Input
-                placeholder="Enter your email address"
+                placeholder="Asadujjaman@gmail.com"
                 type="email"
                 style={{
-                  border: "1px solid #E0E4EC",
-                  height: "52px",
-                  background: "white",
-                  borderRadius: "8px",
+                  border: "1px solid #E0E0E0",
+                  height: "50px",
+                  background: "#FEFEFE",
+                  borderRadius: "4px",
                   outline: "none",
                 }}
               />
@@ -94,8 +69,9 @@ const Login = () => {
 
           <div style={{ marginBottom: "24px" }}>
             <label
-              style={{ display: "block", marginBottom: "5px" }}
+              style={{ display: "block", marginBottom: "6px" }}
               htmlFor="password"
+              className="text-base font-medium leading-6 text-[#636363]"
             >
               Password
             </label>
@@ -111,12 +87,12 @@ const Login = () => {
             >
               <Input.Password
                 type="password"
-                placeholder="Enter your password"
+                placeholder="********"
                 style={{
-                  border: "1px solid #E0E4EC",
-                  height: "52px",
-                  background: "white",
-                  borderRadius: "8px",
+                  border: "1px solid #E0E0E0",
+                  height: "50px",
+                  background: "#FEFEFE",
+                  borderRadius: "4px",
                   outline: "none",
                 }}
               />
@@ -131,37 +107,46 @@ const Login = () => {
             }}
           >
             <Form.Item name="remember" valuePropName="checked" noStyle>
-              <Checkbox style={{ color: "black", fontSize: "16px" }}>
+              <Checkbox style={{ color: "#818181", fontSize: "16px" }}>
                 Remember me
               </Checkbox>
             </Form.Item>
             <a
               className="login-form-forgot"
-              style={{ color: "#D93D04", fontWeight: "bold", fontSize: "16px" }}
+              style={{
+                color: "#D93D04",
+                fontWeight: "500",
+                fontSize: "16px",
+                lineHeight: "24px",
+              }}
               href="/forgot-password"
             >
               Forgot password
             </a>
           </div>
 
-          <Form.Item style={{ marginBottom: 0 }}>
-            <Button
-              onClick={() => navigate("/")}
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-              block
-              style={{
-                height: "52px",
-                fontWeight: "400px",
-                fontSize: "18px",
-                background: "#F27405",
-                marginTop: "56px",
-              }}
-            >
-              Sign In
-            </Button>
-          </Form.Item>
+          <div className="flex justify-center">
+            <Form.Item style={{ marginBottom: 0 }}>
+              <Button
+                onClick={() => navigate("/")}
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+                block
+                style={{
+                  height: "44px",
+                  width: "99px",
+                  fontWeight: "500",
+                  fontSize: "14px",
+                  background: "#BB6D42",
+                  marginTop: "40px",
+                  borderRadius: "8px",
+                }}
+              >
+                Sign In
+              </Button>
+            </Form.Item>
+          </div>
         </Form>
       </div>
     </div>

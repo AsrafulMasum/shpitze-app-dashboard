@@ -28,62 +28,53 @@ const UpdatePassword = () => {
     <div
       style={{
         width: "100%",
-
         height: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <div className="bgImg"></div>
       <div>
         <Form
           name="normal_login"
-          className="login-form  backdrop-blur-lg bg-white/70"
+          className="login-form bg-[#FEFEFECC] border rounded-2xl px-[100px] py-[170px] w-[710px] shadow-soft"
           initialValues={{
             remember: true,
           }}
           style={{
-            width: "630px",
-
             borderRadius: "12px",
-            padding: "90px 57px",
           }}
           onFinish={onFinish}
         >
           <h1
             style={{
-              fontSize: "32px",
-              color: "black",
-              marginBottom: "13px",
+              fontSize: "24px",
+              color: "#333333",
               textAlign: "center",
+              lineHeight: "32px",
+              marginBottom: "24px",
+              fontWeight: 600,
             }}
           >
-            Set a new password
+            Create New Password
           </h1>
           <p
             style={{
-              width: "350px",
               color: "#5C5C5C",
-              fontSize: "14px",
+              fontSize: "16px",
               fontWeight: 400,
-              margin: "0 auto 0 auto",
               textAlign: "center",
+              lineHeight: "32px",
             }}
           >
-            Create a new password. Ensure it differs from previous ones for
-            security
+            Your new password must be different from previous passwords.
           </p>
 
-          <div style={{ margin: "45px 0 20px 0" }}>
+          <div style={{ margin: "24px 0 24px 0" }}>
             <label
-              style={{
-                display: "block",
-                color: "#5C5C5C",
-                marginBottom: "5px",
-              }}
-              className="font-semibold"
-              htmlFor=""
+              style={{ display: "block", marginBottom: "6px" }}
+              htmlFor="password"
+              className="text-base font-medium leading-6 text-[#636363]"
             >
               New Password
             </label>
@@ -99,12 +90,12 @@ const UpdatePassword = () => {
             >
               <Input.Password
                 type="password"
-                placeholder="Enter New password"
+                placeholder="********"
                 style={{
-                  border: "1px solid #E0E4EC",
-                  height: "52px",
-                  background: "white",
-                  borderRadius: "8px",
+                  border: "1px solid #E0E0E0",
+                  height: "50px",
+                  background: "#FEFEFE",
+                  borderRadius: "4px",
                   outline: "none",
                 }}
               />
@@ -116,15 +107,14 @@ const UpdatePassword = () => {
             )}
           </div>
 
-          <div style={{ marginBottom: "40px" }}>
+          <div style={{ marginBottom: "24px" }}>
             <label
               style={{
                 display: "block",
-                color: "#5C5C5C",
                 marginBottom: "5px",
               }}
               htmlFor="email"
-              className="font-semibold"
+              className="text-base font-medium leading-6 text-[#636363]"
             >
               Confirm Password
             </label>
@@ -140,12 +130,12 @@ const UpdatePassword = () => {
             >
               <Input.Password
                 type="password"
-                placeholder="Enter Confirm password"
+                placeholder="********"
                 style={{
-                  border: "1px solid #E0E4EC",
-                  height: "52px",
-                  background: "white",
-                  borderRadius: "8px",
+                  border: "1px solid #E0E0E0",
+                  height: "50px",
+                  background: "#FEFEFE",
+                  borderRadius: "4px",
                   outline: "none",
                 }}
               />
@@ -157,24 +147,27 @@ const UpdatePassword = () => {
             )}
           </div>
 
-          <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              block
-              style={{
-                border: "none",
-                height: "51px",
-                background: "#F27405",
-                color: "white",
-                borderRadius: "8px",
-                outline: "none",
-                marginTop: "",
-              }}
-            >
-              UPDATE PASSWORD
-            </Button>
-          </Form.Item>
+          <div className="flex justify-center">
+            <Form.Item style={{ marginBottom: 0 }}>
+              <Button
+                onClick={() => navigate("/")}
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+                block
+                style={{
+                  height: "44px",
+                  width: "166px",
+                  fontWeight: "500",
+                  fontSize: "14px",
+                  background: "#BB6D42",
+                  borderRadius: "8px",
+                }}
+              >
+                Update Password
+              </Button>
+            </Form.Item>
+          </div>
         </Form>
       </div>
     </div>

@@ -27,21 +27,18 @@ const ForgotPassword = () => {
         alignItems: "center",
         justifyContent: "center",
         width: "100%",
-
         height: "100vh",
       }}
     >
-      <div className="bgImg"></div>
       <div>
         <Form
           name="normal_login"
-          className="login-form backdrop-blur-lg bg-white/70"
+          className="login-form bg-[#FEFEFECC] border rounded-2xl px-[259px] py-[100px] w-[686px] shadow-soft"
           initialValues={{
             remember: true,
           }}
           style={{
             width: "630px",
-
             borderRadius: "12px",
             padding: "90px 57px",
             position: "relative",
@@ -51,19 +48,33 @@ const ForgotPassword = () => {
         >
           <h1
             style={{
-              fontSize: "32px",
-              color: "black",
+              fontSize: "24px",
+              color: "#333333",
               textAlign: "center",
-              fontWeight: 500,
+              fontWeight: 600,
+              lineHeight: "32px",
             }}
           >
             Forgot password ?
           </h1>
+          <p
+            style={{
+              fontSize: "16px",
+              lineHeight: "21px",
+              color: "#5C5C5C",
+              textAlign: "center",
+              marginTop: "24px",
+              marginBottom: "40px",
+            }}
+          >
+            Enter your email below to reset your password
+          </p>
 
-          <div className=" mb-[24px] mt-[28px]">
+          <div style={{ marginBottom: "24px" }}>
             <label
               htmlFor="email"
-              style={{ display: "block", marginBottom: "5px" }}
+              className="text-base font-medium leading-6 text-[#636363]"
+              style={{ display: "block", marginBottom: "6px" }}
             >
               {" "}
               Email{" "}
@@ -80,132 +91,44 @@ const ForgotPassword = () => {
               ]}
             >
               <Input
-                placeholder="Enter your email address"
+                placeholder="Asadujjaman@gmail.com"
                 type="email"
                 style={{
-                  border: "1px solid #E0E4EC",
-                  height: "52px",
-                  background: "white",
-                  borderRadius: "8px",
+                  border: "1px solid #E0E0E0",
+                  height: "50px",
+                  background: "#FEFEFE",
+                  borderRadius: "4px",
                   outline: "none",
                 }}
               />
             </Form.Item>
           </div>
 
-          <Form.Item>
-            <Button
-              onClick={() => navigate("/otp")}
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-              block
-              style={{
-                height: "52px",
-                fontWeight: "400px",
-                fontSize: "18px",
-                background: "#F27405",
-                marginTop: "36px",
-              }}
-            >
-              Send Code
-            </Button>
-          </Form.Item>
+          <div className="flex justify-center">
+            <Form.Item style={{ marginBottom: 0 }}>
+              <Button
+                onClick={() => navigate("/")}
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+                block
+                style={{
+                  height: "44px",
+                  width: "124px",
+                  fontWeight: "500",
+                  fontSize: "14px",
+                  background: "#BB6D42",
+                  marginTop: "24px",
+                  borderRadius: "4px",
+                }}
+              >
+                Send Code
+              </Button>
+            </Form.Item>
+          </div>
         </Form>
       </div>
     </div>
-    // <div
-    //   style={{
-    //     display: "flex",
-    //     alignItems: "center",
-    //     justifyContent: "center",
-    //     width: "100%",
-
-    //     height: "100vh",
-    //   }}
-    // >
-    //   <div className="bgImg"></div>
-    //   <div>
-    //     <Form
-    //       name="normal_login backdrop-blur-lg bg-white/70"
-    //       className="password-form"
-    //       initialValues={{
-    //         remember: true,
-    //       }}
-    //       style={{
-    //         width: "630px",
-
-    //         borderRadius: "12px",
-    //         padding: "90px 57px",
-    //       }}
-    //       onFinish={onFinish}
-    //     >
-    //       <h1
-    //         style={{
-    //           fontSize: "32px",
-    //           marginBottom: "54px",
-    //           color: "#494949",
-    //           textAlign: "center",
-    //         }}
-    //       >
-    //         Forgot Password
-    //       </h1>
-
-    //       <div style={{ marginBottom: "24px" }}>
-    //         <label
-    //           htmlFor="email"
-    //           style={{ display: "block", marginBottom: "5px" }}
-    //         >
-    //           {" "}
-    //           Email Address
-    //         </label>
-    //         <Form.Item
-    //           style={{ marginBottom: 0 }}
-    //           name="email"
-    //           id="email"
-    //           rules={[
-    //             {
-    //               required: true,
-    //               message: "Please input your email!",
-    //             },
-    //           ]}
-    //         >
-    //           <Input
-    //             placeholder="Enter your email address"
-    //             type="email"
-    //             style={{
-    //               border: "1px solid #E0E4EC",
-    //               height: "52px",
-    //               background: "white",
-    //               borderRadius: "8px",
-    //               outline: "none",
-    //             }}
-    //           />
-    //         </Form.Item>
-    //       </div>
-
-    //       <Form.Item>
-    //         <Button
-    //           type="primary"
-    //           htmlType="submit"
-    //           className="login-form-button"
-    //           block
-    //           style={{
-    //             height: "45px",
-    //             fontWeight: "400px",
-    //             fontSize: "18px",
-    //             background: "#2FD5C7",
-    //             color: "white",
-    //             alignSelf: "bottom",
-    //             marginTop: "30px",
-    //           }}
-    //         >
-    //           Send a Code
-    //         </Button>
-    //       </Form.Item>
-    //     </Form>
-    //   </div>
-    // </div>
   );
 };
 
