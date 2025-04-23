@@ -16,13 +16,13 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f5ecda;
+  background: #EBEBEB;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   /* background: #6b5ecc34;  */
-  background: #f0d9aa;
+  background: #EBEBEB;
   border-radius: 10px;
 }
 
@@ -140,7 +140,7 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
 
 /* side layout bg color  */
 :where(.css-dev-only-do-not-override-djtmh8).ant-layout .ant-layout-sider {
-  background: #fbf5eb !important;
+  background: #FDFDFD !important;
 }
 
 :where(.css-dev-only-do-not-override-djtmh8).ant-table-wrapper

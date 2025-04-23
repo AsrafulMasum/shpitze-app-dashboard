@@ -1,18 +1,19 @@
 import { Layout } from "antd";
 import { useState } from "react";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
-import Logo from "../../assets/logo.png";
+import logoutIcon from "../../assets/logoutIcon.png";
+import adminImg from "../../assets/adminImg.png";
+import notificationIcon from "../../assets/notificationIcon.png";
+import logo from "../../assets/logo.png";
+import faqIcon from "../../assets/faqIcon.png";
+import aboutUsIcon from "../../assets/aboutUsIcon.png";
+import addCategoryIcon from "../../assets/addCategoryIcon.png";
+import employeeDetailsIcon from "../../assets/employeeDetailsIcon.png";
+import serviceListIcon from "../../assets/serviceListIcon.png";
+import serviceProviderIcon from "../../assets/serviceProviderIcon.png";
+import transectionDetailsIcon from "../../assets/transectionDetailsIcon.png";
+import addSubCategoryIcon from "../../assets/addSubCategoryIcon.png";
 
-import { LuUser } from "react-icons/lu";
-import { IoSettingsOutline } from "react-icons/io5";
-import { MdOutlineDashboard } from "react-icons/md";
-import { GoBell } from "react-icons/go";
-import { LiaDonateSolid } from "react-icons/lia";
-import { TbCategoryPlus } from "react-icons/tb";
-import { FiUserPlus, FiLogOut } from "react-icons/fi";
-import { VscBook, VscFeedback } from "react-icons/vsc";
-import { RiNotification2Line } from "react-icons/ri";
-import donorIcon from "../../assets/donor.png";
 const { Header, Sider, Content } = Layout;
 
 const Dashboard = () => {
@@ -29,139 +30,102 @@ const Dashboard = () => {
     {
       title: "Dashboard",
       path: "/",
-      icon: <MdOutlineDashboard size={24} />,
+      icon: <img src={faqIcon} alt="" />,
     },
     {
-      title: "User Details",
+      title: "Service Providers",
       path: "/user-list",
-      icon: <LuUser size={24} />,
+      icon: <img src={serviceProviderIcon} alt="" />,
     },
     {
-      title: "Upload donation",
+      title: "Employee Deatils",
       path: "/upload-donation",
-      icon: <LiaDonateSolid size={24} />,
+      icon: <img src={employeeDetailsIcon} alt="" />,
     },
     {
-      title: "Donors Record",
+      title: "Service List",
       path: "/donors-record",
-      icon: <img src={donorIcon} />,
+      icon: <img src={serviceListIcon} alt="" />,
     },
 
     {
-      title: "Books Category",
+      title: "Transection Details",
       path: "/books-category-list",
-      icon: <TbCategoryPlus size={24} />,
+      icon: <img src={transectionDetailsIcon} alt="" />,
     },
     {
-      title: "Books List",
+      title: "Add Category",
       path: "/books-list",
-      icon: <VscBook size={24} />,
-    },
-
-    {
-      title: "Settings",
-      path: "/setting",
-      icon: <IoSettingsOutline size={24} />,
-      option: true,
-      optionsItems: [
-        {
-          title: "FAQ",
-          path: "/faq",
-        },
-        {
-          title: "Privacy Policy",
-          path: "/privacy",
-        },
-
-        {
-          title: "Terms & Condition",
-          path: "/terms",
-        },
-        {
-          title: "SIC guidelines",
-          path: "/sic",
-        },
-
-        {
-          title: "About Us",
-          path: "/about",
-        },
-      ],
+      icon: <img src={addCategoryIcon} alt="" />,
     },
     {
-      title: "Notifications",
+      title: "Add Sub-category",
       path: "/notification",
-      icon: <GoBell size={24} />,
+      icon: <img src={addSubCategoryIcon} alt="" />,
     },
     {
-      title: "Feedback",
+      title: "About Us",
       path: "/feedback",
-      icon: <VscFeedback size={24} />,
+      icon: <img src={aboutUsIcon} alt="" />,
+    },
+    {
+      title: "FAQ",
+      path: "/feedback",
+      icon: <img src={logoutIcon} alt="" />,
+    },
+    {
+      title: "Privacy Policy",
+      path: "/feedback",
+      icon: <img src={logoutIcon} alt="" />,
+    },
+    {
+      title: "Terms & Condition",
+      path: "/feedback",
+      icon: <img src={logoutIcon} alt="" />,
+    },
+    {
+      title: "Reports",
+      path: "/feedback",
+      icon: <img src={logoutIcon} alt="" />,
     },
 
     {
       title: "Add admin",
       path: "/make-admin",
-      icon: <FiUserPlus size={24} />,
+      icon: <img src={logoutIcon} alt="" />,
     },
     {
       title: "Log out",
       path: "/login",
-      icon: <FiLogOut size={24} />,
+      icon: <img src={logoutIcon} alt="" />,
     },
   ];
 
   return (
     <Layout style={{ height: "100vh", width: "100vw" }}>
       <Sider
-        width="15vw"
-        // className=" bg-[#F1E1C2]"
+        width="225"
         style={{
-          // overflow: "auto",
+          overflow: "auto",
           position: "fixed",
-          height: "110vh",
+          top: "80px",
+          bottom: "16px",
+          height: "auto",
           paddingBottom: "60px",
-          // overflowX: "hidden",
+          overflowX: "hidden",
           zIndex: 2,
-          backgroundColor: "#FBF5EB",
+          margin: "24px 26px 0 25px",
+          borderRadius: "24px",
         }}
       >
-        <div
-          className="logo"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "25px",
-            width: "100%",
-            // height: 60,
-            padding: "0 0 20px 0",
-          }}
-        >
-          <Link to="/">
-            <img src={Logo} height="30px" />
-          </Link>
-        </div>
-
-        {/* <div
-          style={{
-            marginBottom: "30px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <img src={LogoText} height="50px" width="50%" />
-        </div> */}
-
         <ul
           style={{
             display: "flex",
             alignItems: "center",
             flexDirection: "column",
-            gap: "15px",
+            gap: "8px",
             height: "90%",
-            marginTop: 0,
+            marginTop: 40,
           }}
         >
           {linkItems.map((item, index) => (
@@ -170,128 +134,35 @@ const Dashboard = () => {
               style={{
                 width: "100%",
                 position: "relative",
-                paddingLeft: "40px",
+                paddingLeft: "25px",
               }}
             >
-              {item.option ? (
-                <Link
-                  to={item.path}
+              <Link
+                to={item.path}
+                style={{
+                  display: "flex",
+                  color: item.path === pathname ? "#333333" : "#767676",
+                  alignItems: "flex-end",
+                  margin: "auto  0 auto 0",
+                  gap: "14px",
+                  background: item.path === pathname ? "#EBEBEB" : "none",
+                  width: "100%",
+                  padding: "12px 8px 12px 12px",
+                  borderTopLeftRadius: "24px",
+                  borderBottomLeftRadius: "24px",
+                }}
+              >
+                <div style={{ height: "24px" }}>{item.icon}</div>
+                <div
                   style={{
-                    width: "100%",
+                    fontSize: "14px",
+                    textAlign: "center",
+                    height: "fit-content",
                   }}
                 >
-                  <div
-                    onClick={() => {
-                      setSetting(!setting);
-                    }}
-                    style={{
-                      display: "flex",
-
-                      color: "black",
-                      alignItems: "flex-end",
-                      margin: "auto  0 auto 0",
-                      gap: "14px",
-                      background: setting ? "#DBB162" : "none",
-                      width: "100%",
-                      padding: "10px 10px",
-                      // borderRadius: "100px 0px 0px 100px",
-                    }}
-                  >
-                    <div style={{ height: "24px" }}>{item.icon}</div>
-                    <div
-                      style={{
-                        fontSize: "14px",
-                        textAlign: "center",
-                        height: "fit-content",
-                      }}
-                    >
-                      {item.title}
-                    </div>
-                  </div>
-
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "flex-end",
-                      flexDirection: "column",
-                      // marginTop: setting ? "5px" : 0,
-                      // marginBottom: "-7px",
-                    }}
-                  >
-                    {setting &&
-                      item.optionsItems.map((optionItem, optionIndex) => (
-                        <Link
-                          to={optionItem.path}
-                          key={optionIndex}
-                          style={{
-                            // width: "150px",
-                            height: "40px",
-                            // borderRadius: "0 10px 10px 0",
-                            width: "100%",
-                          }}
-                        >
-                          <Link
-                            className="text-center"
-                            to={optionItem.path}
-                            style={{
-                              display: "flex",
-
-                              color: "Black",
-                              alignItems: "flex-end",
-
-                              // borderRadius: "100px 0px 0px 100px",
-                            }}
-                          >
-                            <div
-                              className="  mx-auto "
-                              style={{
-                                fontSize: "14px",
-                                marginBottom: "5px",
-                                background:
-                                  optionItem.path === pathname
-                                    ? "#D0D2CE"
-                                    : "white",
-                                height: "fit-content",
-
-                                marginTop: "10px",
-                                width: "100%",
-                                padding: "7px 7px",
-                              }}
-                            >
-                              {optionItem.title}
-                            </div>
-                          </Link>
-                        </Link>
-                      ))}
-                  </div>
-                </Link>
-              ) : (
-                <Link
-                  to={item.path}
-                  style={{
-                    display: "flex",
-                    color: item.path === pathname ? "white" : "Black",
-                    alignItems: "flex-end",
-                    margin: "auto  0 auto 0",
-                    gap: "14px",
-                    background: item.path === pathname ? "#DBB162" : "none",
-                    width: "100%",
-                    padding: "6px 6px",
-                    // borderRadius: "100px 0px 0px 100px",
-                  }}
-                >
-                  <div style={{ height: "24px" }}>{item.icon}</div>
-                  <div
-                    style={{
-                      fontSize: "14px",
-                      textAlign: "center",
-                      height: "fit-content",
-                    }}
-                  >
-                    {item.title}
-                  </div>
-                </Link>
-              )}
+                  {item.title}
+                </div>
+              </Link>
             </li>
           ))}
         </ul>
@@ -305,19 +176,30 @@ const Dashboard = () => {
             height: "80px",
             zIndex: 1,
             padding: 0,
-            backgroundColor: "#FBF5EB",
+            backgroundColor: "#FDFDFD",
             display: "flex",
-            justifyContent: "flex-end",
-            paddingRight: "75px",
-            paddingLeft: "17vw",
+            justifyContent: "space-between",
+            justifyItems: "center",
+            paddingRight: "100px",
+            paddingLeft: "69px",
           }}
         >
+          <div>
+            <img
+              src={logo}
+              alt="logo"
+              style={{
+                width: "147px",
+                paddingTop: "12px",
+              }}
+            />
+          </div>
           <div
             style={{
               width: "220px",
               display: "flex",
               alignItems: "center",
-              gap: "15px",
+              gap: "40px",
               justifyContent: "space-between",
             }}
           >
@@ -325,8 +207,8 @@ const Dashboard = () => {
               <div
                 style={{
                   background: "#F2F2F2",
-                  width: 45,
-                  height: 45,
+                  width: 40,
+                  height: 40,
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -334,26 +216,26 @@ const Dashboard = () => {
                   position: "relative",
                 }}
               >
-                <RiNotification2Line color="black" size={19} />
+                <img src={notificationIcon} alt="" />
 
                 <div
                   style={{
-                    width: "15px",
-                    height: "15px",
+                    width: "14px",
+                    height: "14px",
                     borderRadius: "50%",
-                    background: "#F8EC41",
+                    background: "#FEA500",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    color: "#6A5ECC",
+                    color: "#F2F2F2",
                     position: "absolute",
                     top: 8,
                     right: 10,
                     fontWeight: "500",
-                    fontSize: 12,
+                    fontSize: "12px",
                   }}
                 >
-                  5
+                  1
                 </div>
               </div>
             </Link>
@@ -370,13 +252,11 @@ const Dashboard = () => {
               }}
             >
               <img
-                src={Logo}
+                src={adminImg}
                 style={{
-                  width: "44px",
-                  height: "44px",
+                  width: "40px",
+                  height: "40px",
                   borderRadius: "100%",
-                  borderColor: "#DBB162",
-                  borderWidth: 2,
                 }}
                 alt=""
               />
@@ -384,11 +264,12 @@ const Dashboard = () => {
                 style={{
                   color: "black",
                   fontSize: "16px",
-                  fontWeight: "600",
+                  fontWeight: "500",
                   width: 200,
+                  lineHeight: "24px",
                 }}
               >
-                Admin Asad
+                Admin Niloofar
               </h2>
             </Link>
           </div>
