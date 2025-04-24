@@ -187,5 +187,6 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
 }
 
 .ant-table-wrapper .ant-table-thead > tr > th.action-column {
-  padding-right: 46px !important;
+  padding-right: 80px !important;
 }
+
