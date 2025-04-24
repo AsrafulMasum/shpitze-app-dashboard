@@ -60,7 +60,7 @@ const Dashboard = () => {
     },
     {
       title: "Add Category",
-      path: "/books-list",
+      path: "/add-category",
       icon: <img src={addCategoryIcon} alt="" />,
     },
     {

@@ -16,13 +16,13 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #EBEBEB;
+  background: #ebebeb;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   /* background: #6b5ecc34;  */
-  background: #EBEBEB;
+  background: #ebebeb;
   border-radius: 10px;
 }
 
@@ -141,7 +141,7 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
 
 /* side layout bg color  */
 :where(.css-dev-only-do-not-override-djtmh8).ant-layout .ant-layout-sider {
-  background: #FDFDFD !important;
+  background: #fdfdfd !important;
 }
 
 :where(.css-dev-only-do-not-override-djtmh8).ant-table-wrapper
@@ -184,4 +184,8 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
 
 .ant-tabs .ant-tabs-nav {
   position: static;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th.action-column {
+  padding-right: 46px !important;
 }

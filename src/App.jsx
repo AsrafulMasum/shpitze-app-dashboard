@@ -26,6 +26,7 @@ import SICguidelines from "./Pages/Dashboard/Settings/SICguidelines";
 import Feedback from "./Pages/Dashboard/Feedback";
 import UploadDonation from "./Pages/Dashboard/UploadDonation";
 import EmployeeDetailsList from "./Pages/Dashboard/EmployeeDetailsList";
+import Category from "./Pages/Dashboard/Category";
 
 function App() {
   return (
@@ -55,7 +56,7 @@ function App() {
               />
               <Route path="/books-list" element={<BookList />} />
 
-              <Route path="/notification" element={<Notification />} />
+              <Route path="/add-category" element={<Category />} />
               <Route path="/setting" element={<FAQ />} />
               <Route path="/sic" element={<SICguidelines />} />
               <Route path="/make-admin" element={<MakeAdmin />} />
