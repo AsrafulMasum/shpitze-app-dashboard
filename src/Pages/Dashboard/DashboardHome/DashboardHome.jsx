@@ -47,7 +47,7 @@ function DashboardHome() {
   ];
 
   return (
-    <div className="rounded-2xl flex flex-col">
+    <div className="rounded-2xl flex flex-col p-4">
       <div>
         {data?.map((item, index) => (
           <div key={index} className="bg-white">
@@ -126,38 +126,6 @@ function DashboardHome() {
         ))}
       </div>
 
-      {/* <div
-        style={{
-          marginBottom: "15px",
-          display: "grid",
-          gridTemplateColumns: "auto auto",
-          gap: "20px",
-        }}
-      >
-        <div
-          className="bg-black"
-          style={{
-            borderRadius: "15px",
-            backgroundColor: "#fff",
-            width: "100%",
-            height: "370px",
-            padding: "10px 20px 20px 20px",
-          }}
-        >
-          <DailyOverviewChart />
-        </div>
-        <div
-          style={{
-            borderRadius: "15px",
-            backgroundColor: "#fff",
-            width: "100%",
-            height: "370px",
-            padding: "10px 20px 20px 20px",
-          }}
-        >
-          <TotalSellerChart />
-        </div>
-      </div> */}
     </div>
   );
 }

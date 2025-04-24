@@ -176,6 +176,7 @@ const TotalSellerChart = ({ barColor }) => {
           </p>
         </Dropdown>
       </div>
+      
       <ResponsiveContainer width={"100%"} height={200}>
         <BarChart data={data} barGap={10}>
           <CartesianGrid horizontal vertical={false} />

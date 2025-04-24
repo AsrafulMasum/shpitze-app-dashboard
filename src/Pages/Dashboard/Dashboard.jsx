@@ -288,7 +288,6 @@ const Dashboard = () => {
             marginRight: "10px",
             borderRadius: "24px",
             overflow: "auto",
-            padding: "16px",
             backgroundColor: "white"
           }}
         >

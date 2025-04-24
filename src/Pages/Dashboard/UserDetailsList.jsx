@@ -1,6 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { Button, Dropdown, Input, Modal, Select, Space, Table } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import {
+  Button,
+  Dropdown,
+  Input,
+  Modal,
+  Rate,
+  Select,
+  Space,
+  Table,
+} from "antd";
+import { DownOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
 import Swal from "sweetalert2";
 import { RiLoader3Fill } from "react-icons/ri";
 import Logo from "../../assets/logo.png";
@@ -8,6 +17,8 @@ import { FiArrowUpRight, FiSearch } from "react-icons/fi";
 import { BsFillPersonCheckFill } from "react-icons/bs";
 import { MdPersonOff } from "react-icons/md";
 import UserDetailsModal from "../../Components/Dashboard/UserDetailsModal";
+import provider from "../../assets/serviceProvider.png";
+import providerIcon from "../../assets/providerIcon.png";
 
 const data = [
   {
@@ -15,7 +26,7 @@ const data = [
 
     user: {
       name: "Mr. Mahmud",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={provider} height={46} width={46} />,
     },
     email: "mr101@mail.ru",
     contact: "(+33)7 00 55 59 27",
@@ -26,7 +37,7 @@ const data = [
 
     user: {
       name: "Lily",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={provider} height={46} width={46} />,
     },
     email: "xterris@gmail.com",
     contact: "(+33)7 00 55 59 27",
@@ -37,7 +48,7 @@ const data = [
 
     user: {
       name: "Kathry",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={provider} height={46} width={46} />,
     },
     email: "irnabela@gmail.com",
     contact: "(+33)7 00 55 59 27",
@@ -48,7 +59,7 @@ const data = [
 
     user: {
       name: "Priscilla",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={provider} height={46} width={46} />,
     },
     email: "codence@gmail.com",
     contact: "(+33)7 00 55 59 27",
@@ -59,7 +70,7 @@ const data = [
 
     user: {
       name: "Claire",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={provider} height={46} width={46} />,
     },
     email: "quasiah@gmail.com",
     contact: "(+33)7 00 55 59 27",
@@ -70,7 +81,7 @@ const data = [
 
     user: {
       name: "Irmar",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={provider} height={46} width={46} />,
     },
     email: "xeno@yandex.ru",
     contact: "(+33)7 00 55 59 27",
@@ -81,7 +92,7 @@ const data = [
 
     user: {
       name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={provider} height={46} width={46} />,
     },
     email: "redaniel@gmail.com",
     contact: "(+33)7 00 55 59 27",
@@ -92,7 +103,7 @@ const data = [
 
     user: {
       name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={provider} height={46} width={46} />,
     },
     email: "redaniel@gmail.com",
     contact: "(+33)7 00 55 59 27",
@@ -103,7 +114,7 @@ const data = [
 
     user: {
       name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={provider} height={46} width={46} />,
     },
     email: "redaniel@gmail.com",
     contact: "(+33)7 00 55 59 27",
@@ -114,7 +125,7 @@ const data = [
 
     user: {
       name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={provider} height={46} width={46} />,
     },
     email: "redaniel@gmail.com",
     contact: "(+33)7 00 55 59 27",
@@ -126,7 +137,7 @@ const data = [
 
     user: {
       name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={Logo} height={46} width={46} />,
     },
     email: "jusef@gmail.com",
     date: "18 Jul, 2023  4:30pm",
@@ -140,7 +151,7 @@ const data = [
 
     user: {
       name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={Logo} height={46} width={46} />,
     },
     email: "asad@gmail.com",
     date: "18 Jul, 2023  4:30pm",
@@ -154,7 +165,7 @@ const data = [
 
     user: {
       name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={Logo} height={46} width={46} />,
     },
     email: "fahim@gmail.com",
     date: "18 Jul, 2023  4:30pm",
@@ -168,7 +179,7 @@ const data = [
     name: "Nadir",
     user: {
       name: "Ashutosh",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={Logo} height={46} width={46} />,
     },
     email: "nadir@gmail.com",
     date: "18 Jul, 2023  4:30pm",
@@ -182,7 +193,7 @@ const data = [
 
     user: {
       name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={Logo} height={46} width={46} />,
     },
     email: "tushar@gmail.com",
     date: "18 Jul, 2023  4:30pm",
@@ -196,7 +207,7 @@ const data = [
 
     user: {
       name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={Logo} height={46} width={46} />,
     },
     email: "rahman@gmail.com",
     date: "18 Jul, 2023  4:30pm",
@@ -210,7 +221,7 @@ const data = [
 
     user: {
       name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={Logo} height={46} width={46} />,
     },
     email: "rafsan@gmail.com",
     date: "18 Jul, 2023  4:30pm",
@@ -224,7 +235,7 @@ const data = [
 
     user: {
       name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
+      img: <img src={Logo} height={46} width={46} className="rounded-full" />,
     },
     email: "jusef@gmail.com",
     date: "18 Jul, 2023  4:30pm",
@@ -289,7 +300,7 @@ const UserDetailsList = () => {
       key: "key",
     },
     {
-      title: "User",
+      title: "Providers Name",
       dataIndex: "user",
       key: "user",
       render: (user) => {
@@ -301,7 +312,7 @@ const UserDetailsList = () => {
               gap: 12,
             }}
           >
-            <p> {user?.img} </p>
+            <p>{user?.img} </p>
 
             <p
               style={{
@@ -317,6 +328,23 @@ const UserDetailsList = () => {
       },
     },
     {
+      title: "Rating",
+      dataIndex: "rating",
+      key: "rating",
+      render: () => {
+        return (
+          <Rate
+            disabled
+            defaultValue={2}
+            style={{
+              fontSize: "14px",
+              color: "#FEA500",
+            }}
+          />
+        );
+      },
+    },
+    {
       title: "Email",
       dataIndex: "email",
       key: "email",
@@ -326,6 +354,12 @@ const UserDetailsList = () => {
       title: "Contact",
       dataIndex: "contact",
       key: "contact",
+    },
+
+    {
+      title: "Location",
+      dataIndex: "location",
+      key: "location",
     },
     {
       title: "Action",
@@ -349,12 +383,12 @@ const UserDetailsList = () => {
               outline: "none",
             }}
           >
-            <FiArrowUpRight size={26} className=" text-[#DBB162]" />
+            <FiArrowUpRight size={26} className=" text-[#A1A1A1] mr-4" />
           </button>
 
           <div>
             <button>
-              <BsFillPersonCheckFill size={25} className=" text-[#00B047]" />
+              <img src={providerIcon} alt="" />
             </button>
           </div>
         </div>
@@ -370,11 +404,10 @@ const UserDetailsList = () => {
   };
 
   return (
-    <div className="">
+    <div>
       <div
         style={{
           background: "white",
-          padding: "20px",
           borderRadius: "12px",
         }}
       >
@@ -383,7 +416,7 @@ const UserDetailsList = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            margin: "16px 0",
+            margin: "24px 16px",
           }}
         >
           <div>
@@ -394,7 +427,7 @@ const UserDetailsList = () => {
                 fontWeight: "500",
               }}
             >
-              All user details
+              All Service Providers
             </h3>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
@@ -419,7 +452,7 @@ const UserDetailsList = () => {
 
             <div>
               <Select
-                defaultValue="User type"
+                defaultValue="Rating"
                 style={{
                   width: 120,
                   height: 40,
@@ -430,7 +463,7 @@ const UserDetailsList = () => {
 
             <div>
               <Select
-                defaultValue="Activity"
+                defaultValue="Location"
                 style={{
                   width: 120,
                   height: 40,
@@ -438,47 +471,56 @@ const UserDetailsList = () => {
                 options={items}
               />
             </div>
-
-            <div
-              style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "100%",
-                border: "1px solid #E9E9E9",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "5px 8px",
-                color: "#F2F2F2",
-                cursor: "pointer",
-                background: "#DBB162",
-              }}
-            >
-              <RiLoader3Fill size={20} />
-            </div>
           </div>
         </div>
         <div>
           <Table
+            size="small"
             columns={columns}
             dataSource={data}
             pagination={{
               pageSize: 10,
               defaultCurrent: parseInt(page),
               onChange: handlePageChange,
-              total: 85,
-              showTotal: (total, range) =>
-                `Showing ${range[0]}-${range[1]} out of ${total}`,
+              total: 97,
               defaultPageSize: 20,
+              showSizeChanger: false,
               // defaultCurrent: 1,
+              itemRender: (current, type, originalElement) => {
+                if (type === "prev") {
+                  return (
+                    <a
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 4,
+                        paddingRight: "8px",
+                      }}
+                    >
+                      <LeftOutlined />
+                      Previous
+                    </a>
+                  );
+                }
+                if (type === "next") {
+                  return (
+                    <a
+                      style={{ display: "flex", alignItems: "center", gap: 4 }}
+                    >
+                      Next
+                      <RightOutlined />
+                    </a>
+                  );
+                }
+                return originalElement;
+              },
               style: {
-                marginBottom: 20,
                 marginLeft: 20,
                 marginRight: 20,
                 width: "100%",
                 display: "flex",
-                // gap: 10,
-                // justifyContent: "space-between",
+                justifyContent: "center",
+                alignItems: "center",
               },
             }}
           />

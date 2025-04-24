@@ -34,6 +34,7 @@
 .ant-table-thead .ant-table-cell {
   background-color: #fef1e6 !important;
   color: #734d2c !important;
+  border-radius: 0 !important;
 }
 
 /* .ant-table-thead > tr > th {
