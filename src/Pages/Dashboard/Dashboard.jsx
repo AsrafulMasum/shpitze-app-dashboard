@@ -13,6 +13,11 @@ import serviceListIcon from "../../assets/serviceListIcon.png";
 import serviceProviderIcon from "../../assets/serviceProviderIcon.png";
 import transectionDetailsIcon from "../../assets/transectionDetailsIcon.png";
 import addSubCategoryIcon from "../../assets/addSubCategoryIcon.png";
+import addAdminIcon from "../../assets/addAdminIcon.png";
+import privacyPolicyIcon from "../../assets/privacyPolicyIcon.png";
+import termsConditionIcon from "../../assets/termsConditionIcon.png";
+import reportsIcon from "../../assets/reportsIcon.png";
+import dashboardIcon from "../../assets/dashboardIcon.png";
 
 const { Header, Sider, Content } = Layout;
 
@@ -30,7 +35,7 @@ const Dashboard = () => {
     {
       title: "Dashboard",
       path: "/",
-      icon: <img src={faqIcon} alt="" />,
+      icon: <img src={dashboardIcon} alt="" />,
     },
     {
       title: "Service Providers",
@@ -71,28 +76,28 @@ const Dashboard = () => {
     {
       title: "FAQ",
       path: "/feedback",
-      icon: <img src={logoutIcon} alt="" />,
+      icon: <img src={faqIcon} alt="" />,
     },
     {
       title: "Privacy Policy",
       path: "/feedback",
-      icon: <img src={logoutIcon} alt="" />,
+      icon: <img src={privacyPolicyIcon} alt="" />,
     },
     {
       title: "Terms & Condition",
       path: "/feedback",
-      icon: <img src={logoutIcon} alt="" />,
+      icon: <img src={termsConditionIcon} alt="" />,
     },
     {
       title: "Reports",
       path: "/feedback",
-      icon: <img src={logoutIcon} alt="" />,
+      icon: <img src={reportsIcon} alt="" />,
     },
 
     {
       title: "Add admin",
       path: "/make-admin",
-      icon: <img src={logoutIcon} alt="" />,
+      icon: <img src={addAdminIcon} alt="" />,
     },
     {
       title: "Log out",
@@ -277,13 +282,14 @@ const Dashboard = () => {
 
         <Content
           style={{
-            marginTop: "95px",
-            // marginBottom: "20px",
-            marginLeft: "16%",
+            marginTop: "104px",
+            marginBottom: "16px",
+            marginLeft: "276px",
             marginRight: "10px",
-
+            borderRadius: "24px",
             overflow: "auto",
-            // padding: "20px",
+            padding: "16px",
+            backgroundColor: "white"
           }}
         >
           <Outlet />
