@@ -13,11 +13,9 @@ import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
 import ChangePassword from "./Pages/Dashboard/ChangePassword";
 // import Profile from "./Pages/Dashboard/Profile";
 import ForgotPassword from "./Pages/Auth/ForgotPassword";
-
+import ProviderDetailsList from "../src/Pages/Dashboard/ProviderDetailsList";
 import DonorsRecord from "./Pages/Dashboard/DonorsRecord";
-import UserDetailsList from "./Pages/Dashboard/UserDetailsList";
 import BooksCategoryList from "./Pages/Dashboard/BooksCategoryList";
-
 import AdminProfile from "./Pages/Dashboard/AdminProfile";
 import About from "./Pages/Dashboard/Settings/About";
 import PrivacyPolicy from "./Pages/Dashboard/Settings/PrivacyPolicy";
@@ -27,6 +25,7 @@ import BookList from "./Pages/Dashboard/BookList";
 import SICguidelines from "./Pages/Dashboard/Settings/SICguidelines";
 import Feedback from "./Pages/Dashboard/Feedback";
 import UploadDonation from "./Pages/Dashboard/UploadDonation";
+import EmployeeDetailsList from "./Pages/Dashboard/EmployeeDetailsList";
 
 function App() {
   return (
@@ -44,8 +43,11 @@ function App() {
               }
             >
               <Route path="/" element={<DashboardHome />} />
-              <Route path="/user-list" element={<UserDetailsList />} />
-              <Route path="/donors-record" element={<DonorsRecord />} />
+              <Route
+                path="/service-provider-list"
+                element={<ProviderDetailsList />}
+              />
+              <Route path="/employee-list" element={<EmployeeDetailsList />} />
 
               <Route
                 path="/books-category-list"

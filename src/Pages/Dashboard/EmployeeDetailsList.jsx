@@ -246,7 +246,7 @@ const data = [
   },
 ];
 
-const UserDetailsList = () => {
+const EmployeeDetailsList = () => {
   const [page, setPage] = useState(
     new URLSearchParams(window.location.search).get("page") || 1
   );
@@ -300,7 +300,7 @@ const UserDetailsList = () => {
       key: "key",
     },
     {
-      title: "Providers Name",
+      title: "Employer Name",
       dataIndex: "user",
       key: "user",
       render: (user) => {
@@ -324,23 +324,6 @@ const UserDetailsList = () => {
               {user?.name}
             </p>
           </div>
-        );
-      },
-    },
-    {
-      title: "Rating",
-      dataIndex: "rating",
-      key: "rating",
-      render: () => {
-        return (
-          <Rate
-            disabled
-            defaultValue={2}
-            style={{
-              fontSize: "14px",
-              color: "#FEA500",
-            }}
-          />
         );
       },
     },
@@ -375,19 +358,22 @@ const UserDetailsList = () => {
             paddingRight: 10,
           }}
         >
-          <button
+          <button className="flex justify-center items-center rounded-md"
             onClick={() => setOpen(true)}
             style={{
               cursor: "pointer",
               border: "none",
               outline: "none",
+              backgroundColor: "#F9F9F9",
+              width: "40px",
+              height: "32px",
             }}
           >
-            <FiArrowUpRight size={26} className=" text-[#A1A1A1] mr-4" />
+            <FiArrowUpRight size={26} className="text-[#A1A1A1]" />
           </button>
 
           <div>
-            <button>
+            <button className="bg-[#F9F9F9] w-10 h-8 flex justify-center items-center rounded-md pl-2">
               <img src={providerIcon} alt="" />
             </button>
           </div>
@@ -427,13 +413,13 @@ const UserDetailsList = () => {
                 fontWeight: "500",
               }}
             >
-              All Service Providers
+              All Employer Details
             </h3>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
             <div
               style={{
-                width: "370px",
+                width: "353px",
                 height: "40px",
                 borderRadius: "8px",
               }}
@@ -445,6 +431,7 @@ const UserDetailsList = () => {
                   width: "100%",
                   height: "100%",
                   fontSize: "14px",
+                  backgroundColor: "#FAFAFA",
                 }}
                 size="middle"
               />
@@ -452,20 +439,9 @@ const UserDetailsList = () => {
 
             <div>
               <Select
-                defaultValue="Rating"
-                style={{
-                  width: 120,
-                  height: 40,
-                }}
-                options={userTypeItems}
-              />
-            </div>
-
-            <div>
-              <Select
                 defaultValue="Location"
                 style={{
-                  width: 120,
+                  width: 115,
                   height: 40,
                 }}
                 options={items}
@@ -531,4 +507,4 @@ const UserDetailsList = () => {
   );
 };
 
-export default UserDetailsList;
+export default EmployeeDetailsList;

@@ -25,7 +25,7 @@ const Dashboard = () => {
   const [setting, setSetting] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  console.log(setting);
+
   const handleLogOut = () => {
     navigate("/login");
     window.location.reload();
@@ -39,12 +39,12 @@ const Dashboard = () => {
     },
     {
       title: "Service Providers",
-      path: "/user-list",
+      path: "/service-provider-list",
       icon: <img src={serviceProviderIcon} alt="" />,
     },
     {
       title: "Employee Deatils",
-      path: "/upload-donation",
+      path: "/employee-list",
       icon: <img src={employeeDetailsIcon} alt="" />,
     },
     {
