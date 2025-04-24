@@ -137,19 +137,18 @@ const TotalEarningGrowth = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "end",
-          gap: 10,
-          marginTop: "10px",
         }}
       >
         <Dropdown menu={{ items, onClick }}>
           <p
             style={{
-              // width: "79px",
               cursor: "pointer",
               color: "#717171",
-              border: "1px solid #E9E9E9",
+              border: "1px solid #636363",
               borderRadius: "4px",
-              padding: "4px 12px",
+              padding: "4px",
+              fontSize: "10px",
+              color: "#636363",
             }}
             onClick={(e) => e.preventDefault()}
           >
@@ -158,6 +157,7 @@ const TotalEarningGrowth = () => {
           </p>
         </Dropdown>
       </div>
+      
       <ResponsiveContainer width={"100%"} height={350}>
         <AreaChart data={data} barGap={100}>
           <defs>

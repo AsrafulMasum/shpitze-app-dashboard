@@ -13,7 +13,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const TotalSellerChart = () => {
+const TotalSellerChart = ({ barColor }) => {
   const data = [
     {
       name: "Jan",
@@ -155,30 +155,19 @@ const TotalSellerChart = () => {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
-          gap: 10,
-          marginTop: "10px",
-          marginBottom: "10px",
+          justifyContent: "end",
         }}
       >
-        <p
-          style={{
-            fontSize: "18px",
-            fontWeight: "500",
-            color: "#555555",
-          }}
-        >
-          Donation statistics
-        </p>
         <Dropdown menu={{ items, onClick }}>
           <p
             style={{
-              // width: "79px",
               cursor: "pointer",
               color: "#717171",
-              border: "1px solid #E9E9E9",
+              border: "1px solid #636363",
               borderRadius: "4px",
-              padding: "4px 12px",
+              padding: "4px",
+              fontSize: "10px",
+              color: "#636363",
             }}
             onClick={(e) => e.preventDefault()}
           >
@@ -187,8 +176,8 @@ const TotalSellerChart = () => {
           </p>
         </Dropdown>
       </div>
-      <ResponsiveContainer width={"100%"} height={300}>
-        <BarChart data={data} barGap={100}>
+      <ResponsiveContainer width={"100%"} height={200}>
+        <BarChart data={data} barGap={10}>
           <CartesianGrid horizontal vertical={false} />
           <XAxis
             dataKey="name"
@@ -206,7 +195,7 @@ const TotalSellerChart = () => {
             fontWeight="400"
             strokeOpacity={0}
           />
-          <Bar barSize={10} dataKey="pv" stackId="a" fill="#DBB162" />
+          <Bar barSize={26} dataKey="pv" stackId="a" fill={barColor} />
         </BarChart>
       </ResponsiveContainer>
     </div>
