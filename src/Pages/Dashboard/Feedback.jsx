@@ -311,9 +311,7 @@ const Feedback = () => {
               }
               if (type === "next") {
                 return (
-                  <a
-                    style={{ display: "flex", alignItems: "center", gap: 4 }}
-                  >
+                  <a style={{ display: "flex", alignItems: "center", gap: 4 }}>
                     Next
                     <RightOutlined />
                   </a>

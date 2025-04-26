@@ -14,6 +14,17 @@ const Terms = () => {
       height: 500,
     },
   };
+
+  const handleSubmit = () => {
+    const tempElement = document.createElement("div");
+    tempElement.innerHTML = content;
+    const plainText = tempElement.innerText.trim();
+
+    console.log(plainText);
+
+    setContent("");
+  };
+
   return (
     <div className=" bg-white px-4 py-2 rounded-lg pb-10 ">
       <div
@@ -31,8 +42,8 @@ const Terms = () => {
               color: "#333333",
               fontSize: 18,
               fontWeight: "500",
-              paddingTop: "24px",
               lineHeight: "24px",
+              paddingBottom: "20px",
             }}
           >
             Terms & Condition
@@ -47,18 +58,18 @@ const Terms = () => {
           config={config}
           tabIndex={1}
           onBlur={(newContent) => setContent(newContent)}
-          onChange={(newContent) => {}}
         />
       </div>
       <div
         style={{
-          marginTop: 24,
+          marginTop: 36,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
         <button
+          onClick={handleSubmit}
           style={{
             height: 48,
             width: 173,

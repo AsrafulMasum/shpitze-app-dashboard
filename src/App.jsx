@@ -14,20 +14,16 @@ import ForgotPassword from "./Pages/Auth/ForgotPassword";
 import ProviderDetailsList from "../src/Pages/Dashboard/ProviderDetailsList";
 import AdminProfile from "./Pages/Dashboard/AdminProfile";
 import About from "./Pages/Dashboard/Settings/About";
-import PrivacyPolicy from "./Pages/Dashboard/Settings/PrivacyPolicy";
-import Terms from "./Pages/Dashboard/Settings/Terms";
-import FAQ from "./Pages/Dashboard/Settings/FAQ";
-import BookList from "./Pages/Dashboard/BookList";
-import SICguidelines from "./Pages/Dashboard/Settings/SICguidelines";
 import Feedback from "./Pages/Dashboard/Feedback";
-import UploadDonation from "./Pages/Dashboard/UploadDonation";
 import EmployeeDetailsList from "./Pages/Dashboard/EmployeeDetailsList";
 import Category from "./Pages/Dashboard/Category";
 import Services from "./Pages/Dashboard/Services";
-import TransferList from "antd/es/transfer/list";
 import TransectionDetails from "./Pages/Dashboard/TransectionDetails";
 import SubCategory from "./Pages/Dashboard/SubCategory";
 import AboutUs from "./Pages/Dashboard/AboutUs";
+import FAQ from "./Pages/Dashboard/FAQ";
+import PrivacyPolicy from "./Pages/Dashboard/PrivacyPolicy";
+import Terms from "./Pages/Dashboard/Terms";
 
 function App() {
   return (

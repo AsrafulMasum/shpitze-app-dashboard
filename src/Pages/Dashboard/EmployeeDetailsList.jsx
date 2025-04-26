@@ -406,7 +406,6 @@ const EmployeeDetailsList = () => {
                 color: "#333333",
                 fontSize: 18,
                 fontWeight: "500",
-                paddingTop: "24px",
                 lineHeight: "24px",
               }}
             >

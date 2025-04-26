@@ -6,11 +6,20 @@ const AboutUs = () => {
   const [content, setContent] = useState("");
 
   const config = {
-    height: 600,
+    readonly: false,
+    placeholder: "Start typings...",
+    style: {
+      height: 500,
+    },
   };
 
   const handleSubmit = () => {
-    console.log(content);
+    const tempElement = document.createElement("div");
+    tempElement.innerHTML = content;
+    const plainText = tempElement.innerText.trim();
+
+    console.log(plainText);
+
     setContent("");
   };
   return (

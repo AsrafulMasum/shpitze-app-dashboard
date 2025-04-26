@@ -364,11 +364,10 @@ const Services = () => {
                 color: "#333333",
                 fontSize: 18,
                 fontWeight: "500",
-                paddingTop: "24px",
                 lineHeight: "24px",
               }}
             >
-              All Service Providers
+              All Services
             </h3>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>

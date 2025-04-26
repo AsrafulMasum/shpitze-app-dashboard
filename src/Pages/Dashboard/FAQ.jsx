@@ -75,7 +75,6 @@ const FAQ = () => {
               color: "#333333",
               fontSize: 18,
               fontWeight: "500",
-              paddingTop: "24px",
               lineHeight: "24px",
             }}
           >
@@ -111,7 +110,7 @@ const FAQ = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white py-6 px-4 rounded-md">
+      <div className="bg-white pb-6 px-4 rounded-md">
         {data.map((item, index) => (
           <div key={index} className="flex justify-between items-start gap-4 ">
             <div className="mt-3">
