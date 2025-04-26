@@ -55,7 +55,7 @@ const Dashboard = () => {
 
     {
       title: "Transection Details",
-      path: "/books-category-list",
+      path: "/transection-list",
       icon: <img src={transectionDetailsIcon} alt="" />,
     },
     {
@@ -65,17 +65,17 @@ const Dashboard = () => {
     },
     {
       title: "Add Sub-category",
-      path: "/notification",
+      path: "/add-sub-category",
       icon: <img src={addSubCategoryIcon} alt="" />,
     },
     {
       title: "About Us",
-      path: "/feedback",
+      path: "/aboutUs",
       icon: <img src={aboutUsIcon} alt="" />,
     },
     {
       title: "FAQ",
-      path: "/feedback",
+      path: "/faq",
       icon: <img src={faqIcon} alt="" />,
     },
     {

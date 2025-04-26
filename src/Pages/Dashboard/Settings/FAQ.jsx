@@ -1,12 +1,9 @@
-import { Form, Input, Modal, Table, Button, Row, Col } from "antd";
-import TextArea from "antd/es/input/TextArea";
-import React, { useEffect, useState } from "react";
+import { Modal, Button } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import React, { useState } from "react";
 import { CiEdit } from "react-icons/ci";
-import { FaPlus } from "react-icons/fa6";
 import { GoQuestion } from "react-icons/go";
-import { RxCross2 } from "react-icons/rx";
-
-import Swal from "sweetalert2";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const data = [
   {
@@ -76,44 +73,51 @@ const FAQ = () => {
           <h3 style={{ fontSize: "24px", fontWeight: 600, color: "black" }}>
             Frequently Asked Questions
           </h3>
-          <button
-            onClick={() => setOpenAddModel(true)}
-            style={{
-              borderRadius: "4px",
-              color: "#F2F2F2",
-              backgroundColor: "#DBB162",
-              border: "none",
-              outline: "none",
-              cursor: "pointer",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "4px",
-              padding: "10px 20px",
-              fontWeight: "500",
-            }}
-          >
-            <FaPlus
+          <div>
+            <Button
               style={{
-                marginTop: "-2px",
+                width: "177px",
+                height: "40px",
+                boxShadow: "0px 2px 4px 0px #0000001A",
+                backgroundColor: "#C1EEBD",
+                border: "none",
+                transition: "none",
+                color: "#767676",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
               }}
-            />
-            Add FAQ
-          </button>
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#C1EEBD";
+                e.currentTarget.style.color = "#767676";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#C1EEBD";
+                e.currentTarget.style.color = "#767676";
+              }}
+            >
+              <PlusOutlined />
+              <span style={{ margin: 0 }}>Add sub-category</span>
+            </Button>
+          </div>
         </div>
       </div>
       <div className="bg-white py-6 px-4 rounded-md">
         {data.map((item, index) => (
           <div key={index} className="flex justify-between items-start gap-4 ">
             <div className="mt-3">
-              <GoQuestion color="#DBB162" size={25} />
+              <GoQuestion color="#F27405" size={25} />
             </div>
             <div className="w-full ">
-              <p className="text-base font-medium border-b rounded-xl py-2 px-4 flex items-center gap-8 bg-slate-50">
-                <span className=" flex-1 "> {item?.question}</span>
+              <p className="text-base font-medium border-b rounded-xl py-2 px-4 flex items-center gap-8 bg-[#F9F9F9]">
+                <span className=" flex-1 text-[#636363]">
+                  {" "}
+                  {item?.question}
+                </span>
               </p>
-              <div className="flex justify-start items-start gap-2 border-b  py-2 px-4  rounded-xl my-4 bg-slate-50">
-                <p className="text-[#919191] leading-[24px] mb-6 ">
+              <div className="flex justify-start items-start gap-2 border-b  py-2 px-4  rounded-xl my-4 bg-[#F9F9F9]">
+                <p className="text-[#818181] leading-[24px] mb-6 ">
                   NIFI is a comprehensive nail salon platform app designed to
                   connect clients with top-rated nail salons and professionals,
                   offering features like appointment booking, style exploration,
@@ -121,7 +125,7 @@ const FAQ = () => {
                 </p>
               </div>
             </div>
-            <div className="w-[4%] flex justify-start items-center pt-4 gap-2">
+            <div className="flex flex-col justify-start items-center gap-2">
               <CiEdit
                 onClick={() => {
                   setOpenEditModal(true);
@@ -132,14 +136,14 @@ const FAQ = () => {
                   setans(filterdData[0]?.answer);
                   seteditID(item?._id);
                 }}
-                className="text-2xl cursor-pointer text-[#DBB162]"
+                className="text-3xl font-semibold cursor-pointer text-[#F27405]"
               />
-              <RxCross2
+              <RiDeleteBin6Line
                 onClick={() => {
                   setDeleteId(item?._id);
                   setShowDelete(true);
                 }}
-                className="text-2xl cursor-pointer text-red-600"
+                className="text-2xl cursor-pointer text-[#D93D04]"
               />
             </div>
           </div>

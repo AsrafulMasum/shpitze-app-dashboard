@@ -1,0 +1,66 @@
+import React, { useState, useRef, useEffect } from "react";
+import JoditEditor from "jodit-react";
+
+const AboutUs = () => {
+  const editor = useRef(null);
+  const [content, setContent] = useState("");
+
+  const config = {
+    height: 600,
+  };
+
+  const handleSubmit = () => {
+    console.log(content);
+    setContent("");
+  };
+  return (
+    <div className="px-4">
+      <h3
+        style={{
+          color: "black",
+          fontSize: 18,
+          fontWeight: "500",
+          paddingTop: "24px",
+          paddingBottom: "36px",
+        }}
+      >
+        About Us
+      </h3>
+
+      <div>
+        <JoditEditor
+          key={content}
+          config={config}
+          ref={editor}
+          value={content}
+          onBlur={(newContent) => setContent(newContent)}
+        />
+      </div>
+      <div
+        style={{
+          marginTop: 36,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <button
+          onClick={() => handleSubmit()}
+          style={{
+            height: 44,
+            width: 173,
+            backgroundColor: "#BB6D42",
+            color: "white",
+            borderRadius: "8px",
+            fontWeight: 500,
+            fontSize: 14,
+          }}
+        >
+          Save & Changes
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default AboutUs;

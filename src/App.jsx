@@ -24,6 +24,10 @@ import UploadDonation from "./Pages/Dashboard/UploadDonation";
 import EmployeeDetailsList from "./Pages/Dashboard/EmployeeDetailsList";
 import Category from "./Pages/Dashboard/Category";
 import Services from "./Pages/Dashboard/Services";
+import TransferList from "antd/es/transfer/list";
+import TransectionDetails from "./Pages/Dashboard/TransectionDetails";
+import SubCategory from "./Pages/Dashboard/SubCategory";
+import AboutUs from "./Pages/Dashboard/AboutUs";
 
 function App() {
   return (
@@ -48,11 +52,11 @@ function App() {
               <Route path="/employee-list" element={<EmployeeDetailsList />} />
 
               <Route path="/service-list" element={<Services />} />
-              <Route path="/books-list" element={<BookList />} />
+              <Route path="/transection-list" element={<TransectionDetails />} />
 
               <Route path="/add-category" element={<Category />} />
-              <Route path="/setting" element={<FAQ />} />
-              <Route path="/sic" element={<SICguidelines />} />
+              <Route path="/add-sub-category" element={<SubCategory />} />
+              <Route path="/aboutUs" element={<AboutUs />} />
               <Route path="/make-admin" element={<MakeAdmin />} />
               <Route path="/admin-profile" element={<AdminProfile />} />
               <Route path="/upload-donation" element={<UploadDonation />} />

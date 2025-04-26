@@ -190,3 +190,11 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
   padding-right: 80px !important;
 }
 
+.ant-pagination .ant-pagination-item-active a {
+  background-color: #bb6d42 !important;
+  border-radius: 100% !important;
+}
+
+.ant-pagination .ant-pagination-item-active a {
+  color: white !important;
+}
