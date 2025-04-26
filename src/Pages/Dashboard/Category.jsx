@@ -126,12 +126,14 @@ const Category = () => {
       key: "serial",
       align: "left",
       width: "100px",
+      render: (text) => <span style={{ color: "#636363" }}>#{text}</span>,
     },
     {
       title: "Category Name",
       dataIndex: "category",
       key: "category",
       align: "left",
+      render: (text) => <span style={{ color: "#636363" }}>{text}</span>,
     },
     {
       title: "Action",

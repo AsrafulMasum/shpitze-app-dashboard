@@ -49,7 +49,7 @@ const Dashboard = () => {
     },
     {
       title: "Service List",
-      path: "/donors-record",
+      path: "/service-list",
       icon: <img src={serviceListIcon} alt="" />,
     },
 
@@ -285,10 +285,11 @@ const Dashboard = () => {
             marginTop: "104px",
             marginBottom: "16px",
             marginLeft: "276px",
-            marginRight: "10px",
+            marginRight: "50px",
             borderRadius: "24px",
             overflow: "auto",
-            backgroundColor: "white"
+            backgroundColor: "white",
+            overflowX: "hidden",
           }}
         >
           <Outlet />

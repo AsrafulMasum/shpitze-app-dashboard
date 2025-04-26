@@ -2,7 +2,6 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
-import Notification from "./Pages/Dashboard/Notification";
 import Otp from "./Pages/Auth/Otp";
 import Login from "./Pages/Auth/Login";
 import UpdatePassword from "./Pages/Auth/UpdatePassword";
@@ -11,11 +10,8 @@ import PrivateRoute from "./routes/PrivateRoute";
 
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin";
 import ChangePassword from "./Pages/Dashboard/ChangePassword";
-// import Profile from "./Pages/Dashboard/Profile";
 import ForgotPassword from "./Pages/Auth/ForgotPassword";
 import ProviderDetailsList from "../src/Pages/Dashboard/ProviderDetailsList";
-import DonorsRecord from "./Pages/Dashboard/DonorsRecord";
-import BooksCategoryList from "./Pages/Dashboard/BooksCategoryList";
 import AdminProfile from "./Pages/Dashboard/AdminProfile";
 import About from "./Pages/Dashboard/Settings/About";
 import PrivacyPolicy from "./Pages/Dashboard/Settings/PrivacyPolicy";
@@ -27,6 +23,7 @@ import Feedback from "./Pages/Dashboard/Feedback";
 import UploadDonation from "./Pages/Dashboard/UploadDonation";
 import EmployeeDetailsList from "./Pages/Dashboard/EmployeeDetailsList";
 import Category from "./Pages/Dashboard/Category";
+import Services from "./Pages/Dashboard/Services";
 
 function App() {
   return (
@@ -50,10 +47,7 @@ function App() {
               />
               <Route path="/employee-list" element={<EmployeeDetailsList />} />
 
-              <Route
-                path="/books-category-list"
-                element={<BooksCategoryList />}
-              />
+              <Route path="/service-list" element={<Services />} />
               <Route path="/books-list" element={<BookList />} />
 
               <Route path="/add-category" element={<Category />} />

@@ -1,21 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  Button,
-  Dropdown,
   Input,
-  Modal,
   Rate,
   Select,
-  Space,
   Table,
 } from "antd";
-import { DownOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
-import Swal from "sweetalert2";
-import { RiLoader3Fill } from "react-icons/ri";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import Logo from "../../assets/logo.png";
 import { FiArrowUpRight, FiSearch } from "react-icons/fi";
-import { BsFillPersonCheckFill } from "react-icons/bs";
-import { MdPersonOff } from "react-icons/md";
 import UserDetailsModal from "../../Components/Dashboard/UserDetailsModal";
 import provider from "../../assets/serviceProvider.png";
 import providerIcon from "../../assets/providerIcon.png";
@@ -298,6 +290,7 @@ const ProviderDetailsList = () => {
       title: "S.No",
       dataIndex: "key",
       key: "key",
+      render: (text) => <span className="text-[#636363]">#{text}</span>,
     },
     {
       title: "Providers Name",
@@ -319,6 +312,7 @@ const ProviderDetailsList = () => {
                 letterSpacing: 0.4,
                 fontSize: "#666666",
                 fontWeight: "400",
+                color:"#636363"
               }}
             >
               {user?.name}
@@ -348,18 +342,21 @@ const ProviderDetailsList = () => {
       title: "Email",
       dataIndex: "email",
       key: "email",
+      render: (text) => <span style={{ color: "#636363" }}>{text}</span>,
     },
 
     {
       title: "Contact",
       dataIndex: "contact",
       key: "contact",
+      render: (text) => <span style={{ color: "#636363" }}>{text}</span>,
     },
 
     {
       title: "Location",
       dataIndex: "location",
       key: "location",
+      render: (text) => <span style={{ color: "#636363" }}>{text}</span>,
     },
     {
       title: "Action",
@@ -490,7 +487,6 @@ const ProviderDetailsList = () => {
               total: 97,
               defaultPageSize: 20,
               showSizeChanger: false,
-              // defaultCurrent: 1,
               itemRender: (current, type, originalElement) => {
                 if (type === "prev") {
                   return (
