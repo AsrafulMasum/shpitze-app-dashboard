@@ -11,8 +11,7 @@ const PrivacyPolicy = () => {
     readonly: false,
     placeholder: "Start typings...",
     style: {
-      height: 400,
-      background: "#FBF5EB",
+      height: 500,
     },
   };
   return (
@@ -46,7 +45,6 @@ const PrivacyPolicy = () => {
           config={config}
           tabIndex={1}
           onBlur={(newContent) => setContent(newContent)}
-          onChange={(newContent) => {}}
         />
       </div>
       <div
@@ -59,9 +57,9 @@ const PrivacyPolicy = () => {
       >
         <button
           style={{
-            height: 44,
-            width: 150,
-            backgroundColor: "#DBB162",
+            height: 48,
+            width: 173,
+            backgroundColor: "#BB6D42",
             color: "white",
             borderRadius: "8px",
             fontWeight: 500,

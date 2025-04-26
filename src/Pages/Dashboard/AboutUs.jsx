@@ -17,11 +17,12 @@ const AboutUs = () => {
     <div className="px-4">
       <h3
         style={{
-          color: "black",
+          color: "#333333",
           fontSize: 18,
           fontWeight: "500",
           paddingTop: "24px",
           paddingBottom: "36px",
+          lineHeight: "24px",
         }}
       >
         About Us
@@ -47,7 +48,7 @@ const AboutUs = () => {
         <button
           onClick={() => handleSubmit()}
           style={{
-            height: 44,
+            height: 48,
             width: 173,
             backgroundColor: "#BB6D42",
             color: "white",

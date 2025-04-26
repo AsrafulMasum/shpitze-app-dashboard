@@ -80,12 +80,12 @@ const Dashboard = () => {
     },
     {
       title: "Privacy Policy",
-      path: "/feedback",
+      path: "/privacy",
       icon: <img src={privacyPolicyIcon} alt="" />,
     },
     {
       title: "Terms & Condition",
-      path: "/feedback",
+      path: "/terms",
       icon: <img src={termsConditionIcon} alt="" />,
     },
     {

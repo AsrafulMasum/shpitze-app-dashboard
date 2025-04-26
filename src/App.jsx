@@ -59,7 +59,6 @@ function App() {
               <Route path="/aboutUs" element={<AboutUs />} />
               <Route path="/make-admin" element={<MakeAdmin />} />
               <Route path="/admin-profile" element={<AdminProfile />} />
-              <Route path="/upload-donation" element={<UploadDonation />} />
 
               <Route
                 path="/setting-change-password"

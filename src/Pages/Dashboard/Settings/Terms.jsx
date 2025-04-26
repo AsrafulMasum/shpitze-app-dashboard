@@ -11,8 +11,7 @@ const Terms = () => {
     readonly: false,
     placeholder: "Start typings...",
     style: {
-      height: 400,
-      background: "#FBF5EB",
+      height: 500,
     },
   };
   return (
@@ -29,9 +28,11 @@ const Terms = () => {
           <h3
             className="font-semibold"
             style={{
-              color: "black",
-              fontSize: 22,
+              color: "#333333",
+              fontSize: 18,
               fontWeight: "500",
+              paddingTop: "24px",
+              lineHeight: "24px",
             }}
           >
             Terms & Condition
@@ -59,9 +60,9 @@ const Terms = () => {
       >
         <button
           style={{
-            height: 44,
-            width: 150,
-            backgroundColor: "#DBB162",
+            height: 48,
+            width: 173,
+            backgroundColor: "#BB6D42",
             color: "white",
             borderRadius: "8px",
             fontWeight: 500,

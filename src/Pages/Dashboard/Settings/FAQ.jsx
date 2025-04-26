@@ -61,7 +61,7 @@ const FAQ = () => {
   };
   return (
     <div className="bg-white  px-3 py-2 rounded-lg">
-      <div style={{ margin: "24px 0" }}>
+      <div style={{ margin: "24px 16px" }}>
         <div
           style={{
             display: "flex",
@@ -70,8 +70,16 @@ const FAQ = () => {
             width: "100%",
           }}
         >
-          <h3 style={{ fontSize: "24px", fontWeight: 600, color: "black" }}>
-            Frequently Asked Questions
+          <h3
+            style={{
+              color: "#333333",
+              fontSize: 18,
+              fontWeight: "500",
+              paddingTop: "24px",
+              lineHeight: "24px",
+            }}
+          >
+            FAQ
           </h3>
           <div>
             <Button

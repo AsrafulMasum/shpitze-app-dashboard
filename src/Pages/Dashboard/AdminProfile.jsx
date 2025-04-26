@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Form, Input } from "antd";
 import Swal from "sweetalert2";
 import { CiEdit } from "react-icons/ci";
-import Logo from "../../assets/logo.png";
+import adminImg from "../../assets/admin.jpg"
 const AdminProfile = () => {
   const [isEdit, setIsEdit] = useState(false);
   const handleDelete = (id) => {
@@ -111,7 +111,7 @@ const AdminProfile = () => {
                 }}
               >
                 <img
-                  src={imgPick ? imgPick : Logo}
+                  src={imgPick ? imgPick : adminImg}
                   alt=""
                   style={{
                     height: 114,
@@ -147,7 +147,7 @@ const AdminProfile = () => {
                   color: "#333333",
                 }}
               >
-                Admin Asad
+                Admin Niloofar
               </p>
             </div>
           </div>
@@ -180,9 +180,9 @@ const AdminProfile = () => {
                 style={{
                   fontSize: 16,
                   fontWeight: 500,
-                  color: isEdit ? "#DBB162" : "#818181",
+                  color: isEdit ? "#F27405" : "#818181",
                   cursor: "pointer",
-                  borderBottom: isEdit ? "3px solid #DBB162" : "none",
+                  borderBottom: isEdit ? "3px solid #F27405" : "none",
                   padding: "6px 0px",
                 }}
               >
@@ -193,9 +193,9 @@ const AdminProfile = () => {
                 style={{
                   fontSize: 16,
                   fontWeight: 500,
-                  color: isEdit ? "#818181" : "#DBB162",
+                  color: isEdit ? "#818181" : "#F27405",
                   cursor: "pointer",
-                  borderBottom: isEdit ? "none" : "3px solid #DBB162",
+                  borderBottom: isEdit ? "none" : "3px solid #F27405",
                   padding: "6px 0px",
                 }}
               >
@@ -328,7 +328,7 @@ const AdminProfile = () => {
                     style={{
                       height: 44,
                       width: 150,
-                      backgroundColor: "#DBB162",
+                      backgroundColor: "#F27405",
                       color: "white",
                       borderRadius: "8px",
                       fontWeight: 500,
@@ -525,7 +525,7 @@ const AdminProfile = () => {
                           style={{
                             height: 44,
                             width: 150,
-                            backgroundColor: "#DBB162",
+                            backgroundColor: "#F27405",
                             color: "white",
                             borderRadius: "8px",
                             fontWeight: 500,

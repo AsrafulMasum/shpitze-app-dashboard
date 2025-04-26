@@ -1,239 +1,179 @@
-import { useEffect, useRef, useState } from "react";
-import { Button, Dropdown, Input, Modal, Space, Table } from "antd";
-import { DownOutlined } from "@ant-design/icons";
-import Swal from "sweetalert2";
-import { RiLoader3Fill } from "react-icons/ri";
-import Logo from "../../assets/logo.png";
+import { useEffect, useState } from "react";
+import { Input, Select, Table } from "antd";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { FiArrowUpRight, FiSearch } from "react-icons/fi";
-import { BsFillPersonCheckFill } from "react-icons/bs";
-import { MdPersonOff } from "react-icons/md";
+import UserDetailsModal from "../../Components/Dashboard/UserDetailsModal";
 
 const data = [
   {
-    key: "#1239",
-
-    user: {
-      name: "Mr. Mahmud",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-
-    feedback: "i see some problem",
-    date: "01/01/2025",
+    key: "#1",
+    reportTo: "Mr. Mahmud",
+    reportFor: "Claire",
+    reportType: "Service Issue",
+    date: "2024-04-25 3:45 PM",
+    reportDetails: "Delay in service delivery.",
   },
   {
-    key: "#1238",
-
-    user: {
-      name: "Lily",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
+    key: "#2",
+    reportTo: "Lily",
+    reportFor: "Kathry",
+    reportType: "Payment Issue",
+    date: "2024-04-20 2:15 PM",
+    reportDetails: "Refund not processed yet.",
   },
   {
-    key: "#1237",
-
-    user: {
-      name: "Kathry",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
+    key: "#3",
+    reportTo: "Priscilla",
+    reportFor: "Irmar",
+    reportType: "Behavioral",
+    date: "2024-04-18 11:00 AM",
+    reportDetails: "Rude behavior reported.",
   },
-  {
-    key: "#1236",
-
-    user: {
-      name: "Priscilla",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
-  },
-  {
-    key: "#1235",
-
-    user: {
-      name: "Claire",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
-  },
-  {
-    key: "#1234",
-
-    user: {
-      name: "Irmar",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
-  },
-  {
-    key: "#1233",
-
-    user: {
-      name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
-  },
-  {
-    key: "#1233",
-
-    user: {
-      name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
-  },
-  {
-    key: "#1233",
-
-    user: {
-      name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
-  },
-  {
-    key: "#1233",
-
-    user: {
-      name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
-  },
-
   {
     key: "#4",
-
-    user: {
-      name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
+    reportTo: "Sarah Khan",
+    reportFor: "Jonathan",
+    reportType: "Service Issue",
+    date: "2024-04-15 9:30 AM",
+    reportDetails: "Service not completed as promised.",
   },
   {
     key: "#5",
-
-    user: {
-      name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
+    reportTo: "Ahmed Karim",
+    reportFor: "Sophie",
+    reportType: "Payment Issue",
+    date: "2024-04-13 4:10 PM",
+    reportDetails: "Duplicate payment charged.",
   },
   {
     key: "#6",
-
-    user: {
-      name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
+    reportTo: "James",
+    reportFor: "Zara",
+    reportType: "Behavioral",
+    date: "2024-04-12 10:05 AM",
+    reportDetails: "Customer was verbally abusive.",
   },
   {
     key: "#7",
-    name: "Nadir",
-    user: {
-      name: "Ashutosh",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
+    reportTo: "Maria",
+    reportFor: "Kevin",
+    reportType: "Service Issue",
+    date: "2024-04-10 3:00 PM",
+    reportDetails: "Technician arrived late.",
   },
   {
     key: "#8",
-
-    user: {
-      name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
+    reportTo: "Noah",
+    reportFor: "Amelia",
+    reportType: "Payment Issue",
+    date: "2024-04-09 2:45 PM",
+    reportDetails: "Customer charged for unrequested service.",
   },
   {
     key: "#9",
-
-    user: {
-      name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
+    reportTo: "Sophia",
+    reportFor: "Logan",
+    reportType: "Behavioral",
+    date: "2024-04-08 11:30 AM",
+    reportDetails: "Inappropriate language during chat.",
   },
   {
     key: "#10",
-
-    user: {
-      name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
+    reportTo: "Elijah",
+    reportFor: "Emily",
+    reportType: "Service Issue",
+    date: "2024-04-07 1:15 PM",
+    reportDetails: "Incomplete cleaning job reported.",
   },
   {
     key: "#11",
-
-    user: {
-      name: "Gloria",
-      img: <img src={Logo} height={48} width={48} />,
-    },
-    feedback: "i see some problem",
-    date: "01/01/2025",
+    reportTo: "Olivia",
+    reportFor: "William",
+    reportType: "Payment Issue",
+    date: "2024-04-06 4:50 PM",
+    reportDetails: "Payment method failed multiple times.",
+  },
+  {
+    key: "#12",
+    reportTo: "Benjamin",
+    reportFor: "Mia",
+    reportType: "Behavioral",
+    date: "2024-04-05 9:00 AM",
+    reportDetails: "Rude response over call.",
+  },
+  {
+    key: "#13",
+    reportTo: "Abigail",
+    reportFor: "Lucas",
+    reportType: "Service Issue",
+    date: "2024-04-04 3:30 PM",
+    reportDetails: "Missed scheduled appointment.",
+  },
+  {
+    key: "#14",
+    reportTo: "Jacob",
+    reportFor: "Isabella",
+    reportType: "Payment Issue",
+    date: "2024-04-03 5:15 PM",
+    reportDetails: "Incorrect amount billed.",
+  },
+  {
+    key: "#15",
+    reportTo: "Charlotte",
+    reportFor: "Henry",
+    reportType: "Behavioral",
+    date: "2024-04-02 12:45 PM",
+    reportDetails: "Aggressive tone used with staff.",
+  },
+  {
+    key: "#16",
+    reportTo: "Daniel",
+    reportFor: "Ava",
+    reportType: "Service Issue",
+    date: "2024-04-01 8:30 AM",
+    reportDetails: "Unprofessional behavior by technician.",
+  },
+  {
+    key: "#17",
+    reportTo: "Harper",
+    reportFor: "Sebastian",
+    reportType: "Payment Issue",
+    date: "2024-03-30 10:10 AM",
+    reportDetails: "Coupon not applied properly.",
+  },
+  {
+    key: "#18",
+    reportTo: "Alexander",
+    reportFor: "Ella",
+    reportType: "Behavioral",
+    date: "2024-03-29 3:05 PM",
+    reportDetails: "Shouting during the call.",
+  },
+  {
+    key: "#19",
+    reportTo: "Mason",
+    reportFor: "Grace",
+    reportType: "Service Issue",
+    date: "2024-03-28 1:40 PM",
+    reportDetails: "Faulty product delivered.",
+  },
+  {
+    key: "#20",
+    reportTo: "Chloe",
+    reportFor: "Leo",
+    reportType: "Payment Issue",
+    date: "2024-03-27 11:55 AM",
+    reportDetails: "Late fee charged wrongly.",
   },
 ];
 
 const Feedback = () => {
-  const [page, setPage] = useState(
-    new URLSearchParams(window.location.search).get("page") || 1
-  );
+  const [page, setPage] = useState(1);
   const [open, setOpen] = useState(false);
-  const [block, setBlock] = useState(false);
-  const dropdownRef = useRef();
-  const items = [
-    {
-      label: "Car",
-      key: "Car",
-    },
-    {
-      label: "Bike",
-      key: "Bike",
-    },
-    {
-      label: "Cycle",
-      key: "Cycle",
-    },
-  ];
+  // const [dateRange, setDateRange] = useState("");
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDate(false);
-        setOpen("");
-        setFilter(false);
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
-
-  const handleBlock = (value) => {
-    console.log(value?.key);
-    if (value?.key) {
-      setBlock(!block);
-    }
+  const handleDateChange = (value) => {
+    setDateRange(value);
   };
 
   const columns = [
@@ -241,70 +181,58 @@ const Feedback = () => {
       title: "S.No",
       dataIndex: "key",
       key: "key",
+      render: (text) => <span className="text-[#636363]">{text}</span>,
     },
     {
-      title: "User",
-      dataIndex: "user",
-      key: "user",
-      render: (user) => {
-        return (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-            }}
-          >
-            <p> {user?.img} </p>
-
-            <p
-              style={{
-                letterSpacing: 0.4,
-                fontSize: "#666666",
-                fontWeight: "400",
-              }}
-            >
-              {user?.name}
-            </p>
-          </div>
-        );
-      },
+      title: "Report To",
+      dataIndex: "reportTo",
+      key: "reportTo",
+      render: (text) => <span className="text-[#636363]">{text}</span>,
     },
     {
-      title: "Feedbacks",
-      dataIndex: "feedback",
-      key: "feedback",
+      title: "Report For",
+      dataIndex: "reportFor",
+      key: "reportFor",
+      render: (text) => <span className="text-[#636363]">{text}</span>,
     },
-
+    {
+      title: "Report Type",
+      dataIndex: "reportType",
+      key: "reportType",
+      render: (text) => <span className="text-[#636363]">{text}</span>,
+    },
     {
       title: "Date",
       dataIndex: "date",
       key: "date",
+      render: (text) => <span className="text-[#636363]">{text}</span>,
     },
     {
-      title: "",
-      dataIndex: "action",
+      title: "Report Details",
+      dataIndex: "reportDetails",
+      key: "reportDetails",
+      render: (text) => <span className="text-[#636363]">{text}</span>,
+    },
+    {
+      title: "Action",
       key: "action",
       render: (_, record) => (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-
-            paddingRight: 10,
-          }}
-        >
+        <div className="flex items-center gap-2">
           <button
             onClick={() => setOpen(true)}
             style={{
-              cursor: "pointer",
+              backgroundColor: "#F9F9F9",
               border: "none",
-              outline: "none",
+              borderRadius: "6px",
+              width: "40px",
+              height: "32px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "pointer",
             }}
-            className=" text-[#DBB162] font-medium"
           >
-            View
+            <FiArrowUpRight size={20} className="text-[#A1A1A1]" />
           </button>
         </div>
       ),
@@ -313,126 +241,98 @@ const Feedback = () => {
 
   const handlePageChange = (page) => {
     setPage(page);
-    const params = new URLSearchParams(window.location.search);
-    params.set("page", page);
-    window.history.pushState(null, "", `?${params.toString()}`);
   };
+
   return (
-    <div className="">
-      <div
-        style={{
-          background: "white",
-          padding: "20px",
-          borderRadius: "12px",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            margin: "16px 0",
-          }}
-        >
-          <div>
-            <h3
-              style={{
-                color: "black",
-                fontSize: 18,
-                fontWeight: "500",
-              }}
-            >
-              All Feedbacks
-            </h3>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <div
-              style={{
-                width: "370px",
-                height: "40px",
-                borderRadius: "8px",
-              }}
-            >
+    <div>
+      <div style={{ background: "white", borderRadius: "12px" }}>
+        <div className="flex justify-between items-center m-4">
+          <h3 className="text-[#333] text-lg font-medium pt-6">All Reports</h3>
+          <div className="flex items-center gap-4">
+            <div className="w-[353px] h-[40px]">
               <Input
-                placeholder="Search salon name & location"
+                placeholder="Search..."
                 prefix={<FiSearch size={14} color="#868FA0" />}
                 style={{
-                  width: "100%",
+                  backgroundColor: "#FAFAFA",
                   height: "100%",
                   fontSize: "14px",
                 }}
-                size="middle"
               />
             </div>
+            <Select
+              defaultValue="Date"
+              // value={dateRange}
+              onChange={handleDateChange}
+              style={{ width: 100, height: 40 }}
+              options={[
+                { label: "Last 7 days", value: "last7" },
+                { label: "This Month", value: "thisMonth" },
+                { label: "Last Month", value: "lastMonth" },
+              ]}
+            />
+            <Select
+              defaultValue="Report Type"
+              style={{ width: 130, height: 40 }}
+              options={[
+                { label: "Service Issue", value: "Service Issue" },
+                { label: "Payment Issue", value: "Payment Issue" },
+                { label: "Behavioral", value: "Behavioral" },
+              ]}
+            />
           </div>
         </div>
-        <div>
-          <Table
-            columns={columns}
-            dataSource={data}
-            pagination={{
-              pageSize: 10,
-              defaultCurrent: parseInt(page),
-              onChange: handlePageChange,
-              total: 85,
-              showTotal: (total, range) =>
-                `Showing ${range[0]}-${range[1]} out of ${total}`,
-              defaultPageSize: 20,
-              // defaultCurrent: 1,
-              style: {
-                marginBottom: 20,
-                marginLeft: 20,
-                marginRight: 20,
-                width: "100%",
-                display: "flex",
-                // gap: 10,
-                // justifyContent: "space-between",
-              },
-            }}
-          />
-        </div>
+
+        <Table
+          size="small"
+          columns={columns}
+          dataSource={data}
+          pagination={{
+            pageSize: 12,
+            defaultCurrent: parseInt(page),
+            onChange: handlePageChange,
+            total: 97,
+            showSizeChanger: false,
+            itemRender: (current, type, originalElement) => {
+              if (type === "prev") {
+                return (
+                  <a
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 4,
+                      paddingRight: "8px",
+                    }}
+                  >
+                    <LeftOutlined />
+                    Previous
+                  </a>
+                );
+              }
+              if (type === "next") {
+                return (
+                  <a
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
+                    Next
+                    <RightOutlined />
+                  </a>
+                );
+              }
+              return originalElement;
+            },
+            style: {
+              marginLeft: 20,
+              marginRight: 20,
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            },
+          }}
+        />
       </div>
-      <Modal
-        open={open}
-        onCancel={() => setOpen(false)}
-        centered
-        footer={false}
-        width={500}
-      >
-        <div className="p-6">
-          <h1
-            className=" text-[20px] font-medium"
-            style={{ marginBottom: "12px" }}
-          >
-            Feedback details
-          </h1>
-          <form>
-            <div style={{ marginBottom: "16px" }}>
-              <label style={{ display: "block", marginBottom: "5px" }}>
-                Answer
-              </label>
-              <textarea
-                onChange={(e) => {
-                  setans(e.target.value);
-                }}
-                type="Text"
-                placeholder="Enter answer"
-                style={{
-                  border: "1px solid #E0E4EC",
-                  padding: "10px",
-                  height: "152px",
-                  background: "white",
-                  borderRadius: "8px",
-                  outline: "none",
-                  width: "100%",
-                  resize: "none",
-                }}
-                name="ans"
-              />
-            </div>
-          </form>
-        </div>
-      </Modal>
+      <UserDetailsModal open={open} setOpen={setOpen} />
     </div>
   );
 };

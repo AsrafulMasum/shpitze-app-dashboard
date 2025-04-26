@@ -2,11 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Button, Form, Input, Modal, Select, Table } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { LeftOutlined, PlusOutlined, RightOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const data = [
@@ -18,112 +17,112 @@ const data = [
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "2",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "3",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "4",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "5",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "6",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "7",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "8",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "9",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "10",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "11",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "12",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "13",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "14",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "15",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "16",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "1",
+    key: "17",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
@@ -227,7 +226,7 @@ const SalonCategoryList = () => {
             border: "none",
             outline: "none",
             background: "white",
-            color: "red",
+            color: "#D93D04",
           }}
         >
           <FaRegTrashAlt size={20} />
@@ -283,23 +282,35 @@ const SalonCategoryList = () => {
                 fontWeight: "500",
               }}
             >
-              Make Admin
+              Add Admin
             </h3>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <div>
             <Button
-              onClick={() => setOpenAddModel(true)}
               style={{
-                borderRadius: 8,
-                background: "#DBB162",
-                height: 40,
-                color: "white",
-                fontSize: 14,
-                fontWeight: "400",
+                width: "170px",
+                height: "40px",
+                boxShadow: "0px 2px 4px 0px #0000001A",
+                backgroundColor: "#C1EEBD",
+                border: "none",
+                transition: "none",
+                color: "#767676",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
               }}
-              icon={<PlusOutlined />}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#C1EEBD";
+                e.currentTarget.style.color = "#767676";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#C1EEBD";
+                e.currentTarget.style.color = "#767676";
+              }}
             >
-              Create admin profile
+              <PlusOutlined />
+              <span style={{ margin: 0 }}>Add an Admin</span>
             </Button>
           </div>
         </div>
@@ -309,22 +320,46 @@ const SalonCategoryList = () => {
             style={{}}
             dataSource={data}
             pagination={{
-              pageSize: 10,
+              pageSize: 11,
               defaultCurrent: parseInt(page),
               onChange: handlePageChange,
-              total: 85,
-              showTotal: (total, range) =>
-                `Showing ${range[0]}-${range[1]} out of ${total}`,
-              defaultPageSize: 20,
-              //   defaultCurrent: 1,
+              total: 97,
+              showSizeChanger: false,
+              itemRender: (current, type, originalElement) => {
+                if (type === "prev") {
+                  return (
+                    <a
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 4,
+                        paddingRight: "8px",
+                      }}
+                    >
+                      <LeftOutlined />
+                      Previous
+                    </a>
+                  );
+                }
+                if (type === "next") {
+                  return (
+                    <a
+                      style={{ display: "flex", alignItems: "center", gap: 4 }}
+                    >
+                      Next
+                      <RightOutlined />
+                    </a>
+                  );
+                }
+                return originalElement;
+              },
               style: {
-                marginBottom: 20,
                 marginLeft: 20,
                 marginRight: 20,
                 width: "100%",
                 display: "flex",
-                // gap: 10,
-                // justifyContent: "space-between",
+                justifyContent: "center",
+                alignItems: "center",
               },
             }}
           />
