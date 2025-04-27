@@ -1,28 +1,40 @@
 import { Layout } from "antd";
-import { useState } from "react";
 import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import logoutIcon from "../../assets/logoutIcon.png";
+import logoutActiveIcon from "../../assets/logoutActiveIcon.png";
 import adminImg from "../../assets/adminImg.png";
 import notificationIcon from "../../assets/notificationIcon.png";
 import logo from "../../assets/logo.png";
 import faqIcon from "../../assets/faqIcon.png";
+import faqActiveIcon from "../../assets/faqActiveIcon.png";
 import aboutUsIcon from "../../assets/aboutUsIcon.png";
+import aboutUsActiveIcon from "../../assets/aboutUsActiveIcon.png";
 import addCategoryIcon from "../../assets/addCategoryIcon.png";
+import addCategoryActiveIcon from "../../assets/addCategoryActiveIcon.png";
 import employeeDetailsIcon from "../../assets/employeeDetailsIcon.png";
+import employeeDetailsActiveIcon from "../../assets/employeeDetailsActiveIcon.png";
 import serviceListIcon from "../../assets/serviceListIcon.png";
+import serviceListActiveIcon from "../../assets/serviceListActiveIcon.png";
 import serviceProviderIcon from "../../assets/serviceProviderIcon.png";
+import serviceProvidersActiveIcon from "../../assets/serviceProvidersActiveIcon.png";
 import transectionDetailsIcon from "../../assets/transectionDetailsIcon.png";
+import transectionDetailsActiveIcon from "../../assets/transectionDetailsActiveIcon.png";
 import addSubCategoryIcon from "../../assets/addSubCategoryIcon.png";
+import addSubCategoryActiveIcon from "../../assets/addSubCategoryActiveIcon.png";
 import addAdminIcon from "../../assets/addAdminIcon.png";
+import addAdminActiveIcon from "../../assets/addAdminActiveIcon.png";
 import privacyPolicyIcon from "../../assets/privacyPolicyIcon.png";
+import privacyActiveIcon from "../../assets/privacyActiveIcon.png";
 import termsConditionIcon from "../../assets/termsConditionIcon.png";
+import termsActiveIcon from "../../assets/termsActiveIcon.png";
 import reportsIcon from "../../assets/reportsIcon.png";
+import reportsActiveIcon from "../../assets/reportsActiveIcon.png";
 import dashboardIcon from "../../assets/dashboardIcon.png";
+import dashboardActiveIcon from "../../assets/dashboardActiveIcon.png";
 
 const { Header, Sider, Content } = Layout;
 
 const Dashboard = () => {
-  const [setting, setSetting] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -30,79 +42,173 @@ const Dashboard = () => {
     navigate("/login");
     window.location.reload();
   };
-
+  console.log(pathname);
   const linkItems = [
     {
       title: "Dashboard",
       path: "/",
-      icon: <img src={dashboardIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={pathname === "/" ? dashboardActiveIcon : dashboardIcon}
+          alt="dashboard"
+        />
+      ),
     },
     {
       title: "Service Providers",
       path: "/service-provider-list",
-      icon: <img src={serviceProviderIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={
+            pathname === "/service-provider-list"
+              ? serviceProvidersActiveIcon
+              : serviceProviderIcon
+          }
+          alt="dashboard"
+        />
+      ),
     },
     {
       title: "Employee Deatils",
       path: "/employee-list",
-      icon: <img src={employeeDetailsIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={
+            pathname === "/employee-list"
+              ? employeeDetailsActiveIcon
+              : employeeDetailsIcon
+          }
+          alt="dashboard"
+        />
+      ),
     },
     {
       title: "Service List",
       path: "/service-list",
-      icon: <img src={serviceListIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={
+            pathname === "/service-list"
+              ? serviceListActiveIcon
+              : serviceListIcon
+          }
+          alt="dashboard"
+        />
+      ),
     },
 
     {
       title: "Transection Details",
       path: "/transection-list",
-      icon: <img src={transectionDetailsIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={
+            pathname === "/transection-list"
+              ? transectionDetailsActiveIcon
+              : transectionDetailsIcon
+          }
+          alt="dashboard"
+        />
+      ),
     },
     {
       title: "Add Category",
       path: "/add-category",
-      icon: <img src={addCategoryIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={
+            pathname === "/add-category"
+              ? addCategoryActiveIcon
+              : addCategoryIcon
+          }
+          alt="dashboard"
+        />
+      ),
     },
     {
       title: "Add Sub-category",
       path: "/add-sub-category",
-      icon: <img src={addSubCategoryIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={
+            pathname === "/add-sub-category"
+              ? addSubCategoryActiveIcon
+              : addSubCategoryIcon
+          }
+          alt="dashboard"
+        />
+      ),
     },
     {
       title: "About Us",
       path: "/aboutUs",
-      icon: <img src={aboutUsIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={pathname === "/aboutUs" ? aboutUsActiveIcon : aboutUsIcon}
+          alt="dashboard"
+        />
+      ),
     },
     {
       title: "FAQ",
       path: "/faq",
-      icon: <img src={faqIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={pathname === "/faq" ? faqActiveIcon : faqIcon}
+          alt="dashboard"
+        />
+      ),
     },
     {
       title: "Privacy Policy",
       path: "/privacy",
-      icon: <img src={privacyPolicyIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={pathname === "/privacy" ? privacyActiveIcon : privacyPolicyIcon}
+          alt="dashboard"
+        />
+      ),
     },
     {
       title: "Terms & Condition",
       path: "/terms",
-      icon: <img src={termsConditionIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={pathname === "/terms" ? termsActiveIcon : termsConditionIcon}
+          alt="dashboard"
+        />
+      ),
     },
     {
       title: "Reports",
       path: "/feedback",
-      icon: <img src={reportsIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={pathname === "/feedback" ? reportsActiveIcon : reportsIcon}
+          alt="dashboard"
+        />
+      ),
     },
 
     {
       title: "Add admin",
       path: "/make-admin",
-      icon: <img src={addAdminIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={pathname === "/make-admin" ? addAdminActiveIcon : addAdminIcon}
+          alt="dashboard"
+        />
+      ),
     },
     {
       title: "Log out",
       path: "/login",
-      icon: <img src={logoutIcon} alt="" />,
+      icon: (pathname) => (
+        <img
+          src={pathname === "/login" ? logoutActiveIcon : logoutIcon}
+          alt="dashboard"
+        />
+      ),
     },
   ];
 
@@ -147,7 +253,7 @@ const Dashboard = () => {
                 style={{
                   display: "flex",
                   color: item.path === pathname ? "#333333" : "#767676",
-                  alignItems: "flex-end",
+                  alignItems: "center",
                   margin: "auto  0 auto 0",
                   gap: "14px",
                   background: item.path === pathname ? "#EBEBEB" : "none",
@@ -157,7 +263,7 @@ const Dashboard = () => {
                   borderBottomLeftRadius: "24px",
                 }}
               >
-                <div style={{ height: "24px" }}>{item.icon}</div>
+                <div style={{ height: "24px" }}>{item.icon(pathname)}</div>
                 <div
                   style={{
                     fontSize: "14px",
