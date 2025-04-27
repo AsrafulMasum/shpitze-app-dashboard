@@ -1,6 +1,13 @@
-import { Modal } from "antd";
+import { Modal, Rate } from "antd";
 import React from "react";
-import { FaInstagram } from "react-icons/fa6";
+import user from "../../assets/modalUser.jpg";
+import map from "../../assets/mapIcon.png";
+import arrow from "../../assets/modalArrow.png";
+import place from "../../assets/place.png";
+import charge from "../../assets/charge.png";
+import calender from "../../assets/calender.png";
+import location from "../../assets/location.png";
+import { Link } from "react-router-dom";
 
 const UserDetailsModal = ({ open, setOpen }) => {
   const interest = ["friend ", "family", "career", "animal"];
@@ -10,91 +17,92 @@ const UserDetailsModal = ({ open, setOpen }) => {
       onCancel={() => setOpen(false)}
       centered
       footer={false}
-      width={600}
+      width={335}
     >
-      <div className="p-6">
-        <div className=" grid grid-cols-4 gap-4">
-          {/*  image  */}
-          <div className=" py-5 col-span-1">
-            <img
-              className="w-20 h-20 rounded-full"
-              src="https://i.ibb.co/B2xfD8H/images.png"
-              alt=""
+      <div className="p-4 bg-[#F7F7F7] rounded-3xl">
+        <div
+          className="w-[115px] h-[115px] rounded-full border-[3px] border-[#FDFDFD] overflow-hidden"
+          style={{
+            boxShadow: " 0px 5px 8px 0px #0000000F",
+          }}
+        >
+          <img
+            className="w-[115px] h-[115px] rounded-full object-cover"
+            src={user}
+            alt="Image of User"
+          />
+        </div>
+
+        <div className="flex justify-between items-end -mt-2 mb-1.5">
+          <div className="flex justify-center items-center gap-2">
+            <Rate
+              disabled
+              allowHalf
+              defaultValue={4.5}
+              style={{
+                fontSize: "14px",
+                color: "#FEA500",
+              }}
             />
+            <p>4.5/5</p>
           </div>
-          {/* others data  */}
-          <div className=" col-span-3 flex flex-col justify-start items-start gap-3 pe-4">
-            <div>
-              <p className=" text-lg font-semibold">Naziya Sultana Mithila</p>
-            </div>
-            <div className="flex items-center gap-2 w-full">
-              <p className="text-sm  mb-1 w-1/3">Email :</p>
-              <p className=" text-sm  w-2/3">mithila@gmail.com</p>
-            </div>
-            <div className="flex gap-2 w-full">
-              <p className="text-sm  mb-1  w-1/3">Contact no</p>
-              <p className=" text-sm  w-2/3">+8764895678</p>
-            </div>
-            <div className="flex items-center gap-2 w-full ">
-              <p className="text-sm  mb-1 w-1/3">Lives in</p>
-              <p className=" text-sm  w-2/3">Bangladesh</p>
-            </div>
-            <div className="flex items-center gap-2 w-full">
-              <p className="text-sm  mb-1 w-1/3">Works at </p>
-              <p className=" text-sm  w-2/3">sgf</p>
-            </div>
-            <div className="flex items-center gap-2 w-full">
-              <p className="text-sm  mb-1 w-1/3">Studied at </p>
-              <p className=" text-sm  w-2/3">DMPI</p>
-            </div>
+          <Link
+            className="w-10 h-10 rounded-full bg-[#FDFDFD] flex justify-center items-center border border-[#C1EEBD]"
+            style={{
+              boxShadow: "0px 2px 2px 0px #0000001A",
+            }}
+          >
+            <img src={map} alt="" />
+          </Link>
+        </div>
 
-            <div className=" border border-[#e0d9d1] rounded-lg">
-              <p className=" flex gap-2 py-2 px-2 items-center ">
-                {" "}
-                <span>
-                  {" "}
-                  <FaInstagram size={24} />{" "}
-                </span>
-                <span> https://www.instagram.com/as.ad1679... </span>{" "}
-              </p>
-            </div>
+        <h4 className="text-xl leading-6 font-medium text-[#767676]">
+          Nadir Ibne Nannu
+        </h4>
 
-            {/* interest  */}
-            <p className="text-[#767676] font-semibold pt-2">Interest</p>
-            <div className="flex gap-3">
-              {interest?.map((value, index) => (
-                <button
-                  key={index}
-                  className="bg-[#FBF5EB] text-black  px-2 py-1 rounded-lg"
-                >
-                  {value}
-                </button>
-              ))}
-            </div>
-
-            {/* Bio  */}
-            <div>
-              <p className="text-[#767676] font-semibold pt-2">Bio</p>
-              <p className="text-[#767676] text-sm ">
-                scelerisque Praesent Donec amet, eget lorem. consectetur id
-                varius at, nec nec dolor quam amet, tincidunt quis vitae In Ut
-                laoreet
-              </p>
-            </div>
-
-            {/* report history  */}
-            <div className="w-full">
-              <p className=" text-[#767676] font-semibold py-2">
-                Reports history
-              </p>
-              <div className=" w-full bg-[#F1F1F1] p-5 rounded-lg">
-                <p className="text-[#767676]">
-                  {" "}
-                  1. <span className="text-red-400"> reson 1</span>
-                </p>
-              </div>
-            </div>
+        <div className="flex justify-between items-center mt-1.5 pb-2 border-b-2 border-[#D9D9D9]">
+          <h6 className="text-[#C98A68] text-xs leading-6">
+            Dental hygienist/Assistant
+          </h6>
+          <Link>
+            <img className="w-4 h-4" src={arrow} alt="Arrow button" />
+          </Link>
+        </div>
+        <div className="pt-4 space-y-5">
+          <div className="flex items-center gap-[15px]">
+            <img src={location} alt="" />
+            <p className="text-[#A1A1A1] text-xs leading-[17px] tracking-[-0.5px]">
+              1901 Thornridge Cir. Shiloh, Haw...
+            </p>
           </div>
+          <div className="flex items-center gap-[15px]">
+            <img src={calender} alt="" />
+            <p className="text-[#A1A1A1] text-xs leading-[17px] tracking-[-0.5px]">
+              Jan 1, 2024 (9:00am-3:00pm)
+            </p>
+          </div>
+          <div className="flex items-center gap-[15px]">
+            <img src={place} alt="" />
+            <p className="text-[#A1A1A1] text-xs leading-[17px] tracking-[-0.5px]">
+              Niloofar Dental Care
+            </p>
+          </div>
+          <div className="flex items-center gap-[15px]">
+            <img src={charge} alt="" />
+            <p className="text-[#A1A1A1] text-xs leading-[17px] tracking-[-0.5px]">
+              80/hour
+            </p>
+          </div>
+        </div>
+        <p className="text-[#68817F] text-center text-xs leading-[17px] tracking-[-0.5px] pt-4 pb-2">
+          Booking was completed. The service provider is scheduled to arrive on
+          Jan 1, 2024
+        </p>
+        <p className="text-[#A1A1A1] text-center text-xs leading-6 tracking-[-0.5px]">
+          Do you want to cancel this booking?
+        </p>
+        <div className="text-center">
+          <Link className="text-[#FE9B98] text-xs font-medium leading-6 tracking-[-0.5px]">Cancel booking</Link>
         </div>
       </div>
     </Modal>

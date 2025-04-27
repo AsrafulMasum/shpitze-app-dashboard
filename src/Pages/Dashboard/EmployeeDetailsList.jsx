@@ -447,6 +447,7 @@ const EmployeeDetailsList = () => {
             </div>
           </div>
         </div>
+        
         <div className="relative h-full">
           <Table
             size="small"

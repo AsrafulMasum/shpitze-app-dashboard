@@ -238,32 +238,46 @@ const ProviderDetailsList = () => {
     const urlPage = new URLSearchParams(window.location.search).get("page");
     return urlPage ? parseInt(urlPage, 10) : 1;
   });
+
   const [open, setOpen] = useState(false);
 
   const dropdownRef = useRef();
+
   const items = [
     {
-      label: "Car",
-      key: "Car",
+      label: "London",
+      key: "London",
     },
     {
-      label: "Bike",
-      key: "Bike",
+      label: "Dhaka",
+      key: "Dhaka",
     },
     {
-      label: "Cycle",
-      key: "Cycle",
+      label: "Washington DC",
+      key: "Washington DC",
+    },
+    {
+      label: "Virginia",
+      key: "Virginia",
+    },
+    {
+      label: "California",
+      key: "California",
+    },
+    {
+      label: "Oklahoma",
+      key: "Oklahoma",
     },
   ];
 
   const userTypeItems = [
     {
-      label: "Block",
-      key: "Block",
+      label: "Above 4",
+      key: "Above 4",
     },
     {
-      label: "UnBlock",
-      key: "UnBlock",
+      label: "Below 4",
+      key: "Below 4",
     },
   ];
 
@@ -286,7 +300,7 @@ const ProviderDetailsList = () => {
       title: "S.No",
       dataIndex: "key",
       key: "key",
-      render: (text) => <span className="text-[#636363]">#{text}</span>,
+      render: (text) => <span className="text-[#636363]">{text}</span>,
     },
     {
       title: "Providers Name",
@@ -325,7 +339,8 @@ const ProviderDetailsList = () => {
         return (
           <Rate
             disabled
-            defaultValue={2}
+            allowHalf
+            defaultValue={4.5}
             style={{
               fontSize: "14px",
               color: "#FEA500",
