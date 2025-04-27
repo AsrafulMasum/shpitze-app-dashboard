@@ -409,7 +409,7 @@ const ProviderDetailsList = () => {
         style={{
           background: "white",
           borderRadius: "12px",
-          height: "100%"
+          height: "100%",
         }}
       >
         <div
@@ -491,6 +491,31 @@ const ProviderDetailsList = () => {
               onChange={handlePageChange}
               showSizeChanger={false}
               size="small"
+              itemRender={(pageNum, type, originalElement) => {
+                if (type === "prev") {
+                  return (
+                    <a
+                      className="hover:text-[#333333]"
+                      style={{ display: "flex", alignItems: "center", gap: 4 }}
+                    >
+                      <LeftOutlined />
+                      <span className="mr-2">Previous</span>
+                    </a>
+                  );
+                }
+                if (type === "next") {
+                  return (
+                    <a
+                      className="hover:text-[#333333]"
+                      style={{ display: "flex", alignItems: "center", gap: 4 }}
+                    >
+                      <span className="ml-2">Next</span>
+                      <RightOutlined />
+                    </a>
+                  );
+                }
+                return originalElement;
+              }}
             />
           </div>
         </div>
