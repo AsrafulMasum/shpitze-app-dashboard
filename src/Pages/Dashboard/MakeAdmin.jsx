@@ -132,25 +132,11 @@ const data = [
 
 const SalonCategoryList = () => {
   const [openAddModel, setOpenAddModel] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [page, setPage] = useState(() => {
     const urlPage = new URLSearchParams(window.location.search).get("page");
     return urlPage ? parseInt(urlPage, 10) : 1;
   });
-
-  const items = [
-    {
-      label: "Car",
-      key: "Car",
-    },
-    {
-      label: "Bike",
-      key: "Bike",
-    },
-    {
-      label: "Cycle",
-      key: "Cycle",
-    },
-  ];
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -213,11 +199,28 @@ const SalonCategoryList = () => {
             color: "#D93D04",
           }}
         >
-          <FaRegTrashAlt size={20} />
+          <FaRegTrashAlt
+            onClick={() => {
+              setShowDelete(true);
+            }}
+            size={20}
+          />
         </button>
       ),
     },
   ];
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpenAddModel(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   const handlePageChange = (page) => {
     setPage(page);
@@ -260,6 +263,7 @@ const SalonCategoryList = () => {
           </div>
           <div>
             <Button
+              onClick={() => setOpenAddModel(true)}
               style={{
                 width: "170px",
                 height: "40px",
@@ -331,12 +335,11 @@ const SalonCategoryList = () => {
           </div>
         </div>
       </div>
+
       <Modal
         centered
         open={openAddModel}
         onCancel={() => {
-          // null;
-          setImgFile(null);
           setOpenAddModel(false);
         }}
         width={500}
@@ -349,6 +352,7 @@ const SalonCategoryList = () => {
           >
             {`Add new Admin`}
           </h1>
+
           <Form>
             <div>
               <p className="text-[#6D6D6D] py-1">Name</p>
@@ -417,11 +421,34 @@ const SalonCategoryList = () => {
             </div>
 
             <div className="text-center mt-6">
-              <button className="bg-[#DBB162] px-6 py-3 w-full text-[#FEFEFE] rounded-md">
-                create Profile
+              <button className="bg-[#BB6D42] px-6 py-3 w-full text-[#FEFEFE] rounded-md">
+                Create Admin
               </button>
             </div>
           </Form>
+        </div>
+      </Modal>
+      
+      <Modal
+        centered
+        open={showDelete}
+        onCancel={() => setShowDelete(false)}
+        width={400}
+        footer={false}
+      >
+        <div className="p-6 text-center">
+          <p className="text-[#D93D04] text-center font-semibold">
+            Are you sure !
+          </p>
+          <p className="pt-4 pb-12 text-center">
+            Do you want to delete this content ?
+          </p>
+          <button
+            // onClick={handeldelete}
+            className="bg-[#BB6D42] py-2 px-5 text-white rounded-md"
+          >
+            Confirm
+          </button>
         </div>
       </Modal>
     </div>

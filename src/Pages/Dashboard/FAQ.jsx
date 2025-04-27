@@ -37,6 +37,7 @@ const data = [
     ans: "convallis. Praesent felis, placerat Ut ac quis dui volutpat vitae elementum quis adipiscing malesuada tempor non ipsum non, nec vitae amet, Donec tincidunt efficitur. in In ipsum Cras turpis viverra laoreet ullamcorper placerat diam sed leo. faucibus vitae eget vitae vehicula, luctus id Lorem fringilla tempor faucibus ipsum Vestibulum tincidunt ullamcorper elit diam turpis placerat vitae Nunc vehicula, ex faucibus venenatis at, maximus commodo urna. Nam ex quis sit non vehicula, massa urna at ",
   },
 ];
+
 const FAQ = () => {
   const [openAddModel, setOpenAddModel] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -53,12 +54,12 @@ const FAQ = () => {
     if (!question || !ans) {
       return false;
     }
-    // add faq
   };
-  //update faq
+
   const handleUpdate = (e) => {
     e.preventDefault();
   };
+
   return (
     <div className="bg-white  px-3 py-2 rounded-lg">
       <div style={{ margin: "24px 16px" }}>
@@ -82,6 +83,7 @@ const FAQ = () => {
           </h3>
           <div>
             <Button
+              onClick={() => setOpenAddModel(true)}
               style={{
                 width: "177px",
                 height: "40px",
@@ -156,6 +158,7 @@ const FAQ = () => {
           </div>
         ))}
       </div>
+
       <Modal
         centered
         open={openAddModel}
@@ -223,7 +226,7 @@ const FAQ = () => {
               style={{
                 border: "none",
                 height: "44px",
-                background: "#DBB162",
+                background: "#BB6D42",
                 color: "white",
                 borderRadius: "8px",
                 outline: "none",
@@ -235,6 +238,7 @@ const FAQ = () => {
           </form>
         </div>
       </Modal>
+
       <Modal
         centered
         open={openEditModal}
@@ -306,7 +310,7 @@ const FAQ = () => {
               style={{
                 border: "none",
                 height: "44px",
-                background: "#6A5ECC",
+                background: "#BB6D42",
                 color: "white",
                 borderRadius: "8px",
                 outline: "none",
@@ -318,6 +322,7 @@ const FAQ = () => {
           </form>
         </div>
       </Modal>
+
       <Modal
         centered
         open={showDelete}
@@ -326,7 +331,7 @@ const FAQ = () => {
         footer={false}
       >
         <div className="p-6 text-center">
-          <p className="text-[#6A5ECC] text-center font-semibold">
+          <p className="text-[#D93D04] text-center font-semibold">
             Are you sure !
           </p>
           <p className="pt-4 pb-12 text-center">
@@ -334,7 +339,7 @@ const FAQ = () => {
           </p>
           <button
             // onClick={handeldelete}
-            className="bg-[#DBB162] py-2 px-5 text-white rounded-md"
+            className="bg-[#BB6D42] py-2 px-5 text-white rounded-md"
           >
             Confirm
           </button>
