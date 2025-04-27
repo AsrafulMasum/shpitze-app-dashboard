@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Input, Select, Table } from "antd";
+import { Input, Pagination, Select, Table } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { FiArrowUpRight, FiSearch } from "react-icons/fi";
 import UserDetailsModal from "../../Components/Dashboard/UserDetailsModal";
@@ -168,9 +168,12 @@ const data = [
 ];
 
 const Feedback = () => {
-  const [page, setPage] = useState(1);
   const [open, setOpen] = useState(false);
   // const [dateRange, setDateRange] = useState("");
+  const [page, setPage] = useState(() => {
+    const urlPage = new URLSearchParams(window.location.search).get("page");
+    return urlPage ? parseInt(urlPage, 10) : 1;
+  });
 
   const handleDateChange = (value) => {
     setDateRange(value);
@@ -241,11 +244,19 @@ const Feedback = () => {
 
   const handlePageChange = (page) => {
     setPage(page);
+    const params = new URLSearchParams(window.location.search);
+    params.set("page", page);
+    window.history.replaceState(null, "", `?${params.toString()}`);
   };
 
+  const pageSize = 12;
+  const paginatedData = data.slice((page - 1) * pageSize, page * pageSize);
+
   return (
-    <div>
-      <div style={{ background: "white", borderRadius: "12px" }}>
+    <div className="h-[78vh]">
+      <div
+        style={{ background: "white", borderRadius: "12px", height: "100%" }}
+      >
         <div className="flex justify-between items-center m-4">
           <h3 className="text-[#333] text-lg font-medium">All Reports</h3>
           <div className="flex items-center gap-4 pt-2">
@@ -283,52 +294,24 @@ const Feedback = () => {
           </div>
         </div>
 
-        <Table
-          size="small"
-          columns={columns}
-          dataSource={data}
-          pagination={{
-            pageSize: 12,
-            defaultCurrent: parseInt(page),
-            onChange: handlePageChange,
-            total: 97,
-            showSizeChanger: false,
-            itemRender: (current, type, originalElement) => {
-              if (type === "prev") {
-                return (
-                  <a
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 4,
-                      paddingRight: "8px",
-                    }}
-                  >
-                    <LeftOutlined />
-                    Previous
-                  </a>
-                );
-              }
-              if (type === "next") {
-                return (
-                  <a style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                    Next
-                    <RightOutlined />
-                  </a>
-                );
-              }
-              return originalElement;
-            },
-            style: {
-              marginLeft: 20,
-              marginRight: 20,
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            },
-          }}
-        />
+        <div className="relative h-full">
+          <Table
+            size="small"
+            columns={columns}
+            dataSource={paginatedData}
+            pagination={false}
+          />
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+            <Pagination
+              current={page}
+              pageSize={pageSize}
+              total={data.length}
+              onChange={handlePageChange}
+              showSizeChanger={false}
+              size="small"
+            />
+          </div>
+        </div>
       </div>
       <UserDetailsModal open={open} setOpen={setOpen} />
     </div>

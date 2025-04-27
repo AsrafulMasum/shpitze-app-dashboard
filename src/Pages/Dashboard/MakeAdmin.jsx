@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { FaRegTrashAlt } from "react-icons/fa";
-import { Button, Form, Input, Modal, Select, Table } from "antd";
+import { Button, Form, Input, Modal, Pagination, Select, Table } from "antd";
 import { LeftOutlined, PlusOutlined, RightOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
@@ -132,13 +132,11 @@ const data = [
 
 const SalonCategoryList = () => {
   const [openAddModel, setOpenAddModel] = useState(false);
-  const [imgFile, setImgFile] = useState(null);
-  const [category, setCategory] = useState("location");
-  const [page, setPage] = useState(
-    new URLSearchParams(window.location.search).get("page") || 1
-  );
+  const [page, setPage] = useState(() => {
+    const urlPage = new URLSearchParams(window.location.search).get("page");
+    return urlPage ? parseInt(urlPage, 10) : 1;
+  });
 
-  const dropdownRef = useRef();
   const items = [
     {
       label: "Car",
@@ -175,20 +173,6 @@ const SalonCategoryList = () => {
       }
     });
   };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDate(false);
-        setOpen("");
-        setFilter(false);
-      }
-    };
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
 
   const columns = [
     {
@@ -239,31 +223,20 @@ const SalonCategoryList = () => {
     setPage(page);
     const params = new URLSearchParams(window.location.search);
     params.set("page", page);
-    window.history.pushState(null, "", `?${params.toString()}`);
+    window.history.replaceState(null, "", `?${params.toString()}`);
   };
 
-  const onClick = ({ key }) => {
-    setCategory(key);
-    const params = new URLSearchParams(window.location.search);
-    params.set("category", key);
-    window.history.pushState(null, "", `?${params.toString()}`);
-  };
-
-  const onSelect = (newValue) => {
-    const date = newValue.format("MMM-DD-YYYY");
-    setValue(date);
-    const params = new URLSearchParams(window.location.search);
-    params.set("date", date);
-    window.history.pushState(null, "", `?${params.toString()}`);
-  };
+  const pageSize = 14;
+  const paginatedData = data.slice((page - 1) * pageSize, page * pageSize);
 
   return (
-    <div>
+    <div className="h-[82vh]">
       <div
         style={{
           background: "white",
           padding: "20px 0",
           borderRadius: "12px",
+          height: "100%",
         }}
       >
         <div
@@ -314,55 +287,23 @@ const SalonCategoryList = () => {
             </Button>
           </div>
         </div>
-        <div>
+        <div className="relative h-full">
           <Table
             columns={columns}
             style={{}}
-            dataSource={data}
-            pagination={{
-              pageSize: 12,
-              defaultCurrent: parseInt(page),
-              onChange: handlePageChange,
-              total: 97,
-              showSizeChanger: false,
-              itemRender: (current, type, originalElement) => {
-                if (type === "prev") {
-                  return (
-                    <a
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 4,
-                        paddingRight: "8px",
-                      }}
-                    >
-                      <LeftOutlined />
-                      Previous
-                    </a>
-                  );
-                }
-                if (type === "next") {
-                  return (
-                    <a
-                      style={{ display: "flex", alignItems: "center", gap: 4 }}
-                    >
-                      Next
-                      <RightOutlined />
-                    </a>
-                  );
-                }
-                return originalElement;
-              },
-              style: {
-                marginLeft: 20,
-                marginRight: 20,
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              },
-            }}
+            dataSource={paginatedData}
+            pagination={false}
           />
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+            <Pagination
+              current={page}
+              pageSize={pageSize}
+              total={data.length}
+              onChange={handlePageChange}
+              showSizeChanger={false}
+              size="small"
+            />
+          </div>
         </div>
       </div>
       <Modal

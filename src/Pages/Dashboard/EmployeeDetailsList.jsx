@@ -1,9 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  Input,
-  Select,
-  Table,
-} from "antd";
+import { Input, Pagination, Select, Table } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import Logo from "../../assets/logo.png";
 import { FiArrowUpRight, FiSearch } from "react-icons/fi";
@@ -238,9 +234,10 @@ const data = [
 ];
 
 const EmployeeDetailsList = () => {
-  const [page, setPage] = useState(
-    new URLSearchParams(window.location.search).get("page") || 1
-  );
+  const [page, setPage] = useState(() => {
+    const urlPage = new URLSearchParams(window.location.search).get("page");
+    return urlPage ? parseInt(urlPage, 10) : 1;
+  });
   const [open, setOpen] = useState(false);
 
   const dropdownRef = useRef();
@@ -353,7 +350,8 @@ const EmployeeDetailsList = () => {
             paddingRight: 10,
           }}
         >
-          <button className="flex justify-center items-center rounded-md"
+          <button
+            className="flex justify-center items-center rounded-md"
             onClick={() => setOpen(true)}
             style={{
               cursor: "pointer",
@@ -381,15 +379,19 @@ const EmployeeDetailsList = () => {
     setPage(page);
     const params = new URLSearchParams(window.location.search);
     params.set("page", page);
-    window.history.pushState(null, "", `?${params.toString()}`);
+    window.history.replaceState(null, "", `?${params.toString()}`);
   };
 
+  const pageSize = 9;
+  const paginatedData = data.slice((page - 1) * pageSize, page * pageSize);
+
   return (
-    <div>
+    <div className="h-[77vh]">
       <div
         style={{
           background: "white",
           borderRadius: "12px",
+          height: "100%",
         }}
       >
         <div
@@ -445,57 +447,23 @@ const EmployeeDetailsList = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="relative h-full">
           <Table
             size="small"
             columns={columns}
-            dataSource={data}
-            pagination={{
-              pageSize: 10,
-              defaultCurrent: parseInt(page),
-              onChange: handlePageChange,
-              total: 97,
-              defaultPageSize: 20,
-              showSizeChanger: false,
-              // defaultCurrent: 1,
-              itemRender: (current, type, originalElement) => {
-                if (type === "prev") {
-                  return (
-                    <a
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 4,
-                        paddingRight: "8px",
-                      }}
-                    >
-                      <LeftOutlined />
-                      Previous
-                    </a>
-                  );
-                }
-                if (type === "next") {
-                  return (
-                    <a
-                      style={{ display: "flex", alignItems: "center", gap: 4 }}
-                    >
-                      Next
-                      <RightOutlined />
-                    </a>
-                  );
-                }
-                return originalElement;
-              },
-              style: {
-                marginLeft: 20,
-                marginRight: 20,
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              },
-            }}
+            dataSource={paginatedData}
+            pagination={false}
           />
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+            <Pagination
+              current={page}
+              pageSize={pageSize}
+              total={data.length}
+              onChange={handlePageChange}
+              showSizeChanger={false}
+              size="small"
+            />
+          </div>
         </div>
       </div>
       <UserDetailsModal open={open} setOpen={setOpen} />
