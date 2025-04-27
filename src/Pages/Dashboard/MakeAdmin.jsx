@@ -262,7 +262,7 @@ const SalonCategoryList = () => {
       <div
         style={{
           background: "white",
-          padding: "20px",
+          padding: "20px 0",
           borderRadius: "12px",
         }}
       >
@@ -271,7 +271,7 @@ const SalonCategoryList = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            margin: "16px 0",
+            margin: "0 16px 20px 16px",
           }}
         >
           <div>
@@ -320,7 +320,7 @@ const SalonCategoryList = () => {
             style={{}}
             dataSource={data}
             pagination={{
-              pageSize: 11,
+              pageSize: 12,
               defaultCurrent: parseInt(page),
               onChange: handlePageChange,
               total: 97,

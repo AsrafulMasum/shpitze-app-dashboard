@@ -247,8 +247,8 @@ const Feedback = () => {
     <div>
       <div style={{ background: "white", borderRadius: "12px" }}>
         <div className="flex justify-between items-center m-4">
-          <h3 className="text-[#333] text-lg font-medium pt-6">All Reports</h3>
-          <div className="flex items-center gap-4">
+          <h3 className="text-[#333] text-lg font-medium">All Reports</h3>
+          <div className="flex items-center gap-4 pt-2">
             <div className="w-[353px] h-[40px]">
               <Input
                 placeholder="Search..."
