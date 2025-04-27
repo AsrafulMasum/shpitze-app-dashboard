@@ -42,7 +42,7 @@ const Dashboard = () => {
     navigate("/login");
     window.location.reload();
   };
-  console.log(pathname);
+
   const linkItems = [
     {
       title: "Dashboard",

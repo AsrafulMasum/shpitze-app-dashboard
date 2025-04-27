@@ -240,53 +240,30 @@ const ProviderDetailsList = () => {
   });
 
   const [open, setOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [selectedRating, setSelectedRating] = useState("Rating");
+  const [selectedLocation, setSelectedLocation] = useState("Location");
 
   const dropdownRef = useRef();
 
-  const items = [
-    {
-      label: "London",
-      key: "London",
-    },
-    {
-      label: "Dhaka",
-      key: "Dhaka",
-    },
-    {
-      label: "Washington DC",
-      key: "Washington DC",
-    },
-    {
-      label: "Virginia",
-      key: "Virginia",
-    },
-    {
-      label: "California",
-      key: "California",
-    },
-    {
-      label: "Oklahoma",
-      key: "Oklahoma",
-    },
+  const locations = [
+    { value: "London", label: "London" },
+    { value: "Dhaka", label: "Dhaka" },
+    { value: "Washington DC", label: "Washington DC" },
+    { value: "Virginia", label: "Virginia" },
+    { value: "California", label: "California" },
+    { value: "Oklahoma", label: "Oklahoma" },
   ];
 
-  const userTypeItems = [
-    {
-      label: "Above 4",
-      key: "Above 4",
-    },
-    {
-      label: "Below 4",
-      key: "Below 4",
-    },
+  const ratings = [
+    { value: "Above 4", label: "Above 4" },
+    { value: "Below 4", label: "Below 4" },
   ];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDate(false);
-        setOpen("");
-        setFilter(false);
+        setOpen(false);
       }
     };
     document.addEventListener("click", handleClickOutside);
@@ -418,6 +395,19 @@ const ProviderDetailsList = () => {
   const pageSize = 9;
   const paginatedData = data.slice((page - 1) * pageSize, page * pageSize);
 
+  const handleSearchChange = (e) => {
+    e.preventDefault();
+    setSearchText(e.target.value);
+  };
+
+  const handleRatingChange = (value) => {
+    setSelectedRating(value);
+  };
+
+  const handleLocationChange = (value) => {
+    setSelectedLocation(value);
+  };
+
   return (
     <div className="h-[77vh]">
       <div
@@ -457,6 +447,7 @@ const ProviderDetailsList = () => {
             >
               <Input
                 placeholder="Search..."
+                onChange={handleSearchChange}
                 prefix={<FiSearch size={14} color="#868FA0" />}
                 style={{
                   width: "100%",
@@ -470,23 +461,25 @@ const ProviderDetailsList = () => {
 
             <div>
               <Select
-                defaultValue="Rating"
+                value={selectedRating}
+                onChange={handleRatingChange}
                 style={{
                   width: 115,
                   height: 40,
                 }}
-                options={userTypeItems}
+                options={ratings}
               />
             </div>
 
             <div>
               <Select
-                defaultValue="Location"
+                value={selectedLocation}
+                onChange={handleLocationChange}
                 style={{
                   width: 115,
                   height: 40,
                 }}
-                options={items}
+                options={locations}
               />
             </div>
           </div>
