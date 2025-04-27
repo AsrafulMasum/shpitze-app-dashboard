@@ -234,32 +234,26 @@ const TransectionDetails = () => {
     return urlPage ? parseInt(urlPage, 10) : 1;
   });
   const [open, setOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [dateRange, setDateRange] = useState("Date");
+  const [selectedPriceSystem, setSelectedPriceSystem] =
+    useState("Price System");
 
   const dropdownRef = useRef();
-  const items = [
-    {
-      label: "Car",
-      key: "Car",
-    },
-    {
-      label: "Bike",
-      key: "Bike",
-    },
-    {
-      label: "Cycle",
-      key: "Cycle",
-    },
+
+  const dates = [
+    { label: "Last 7 days", value: "last7" },
+    { label: "This Month", value: "thisMonth" },
+    { label: "Last Month", value: "lastMonth" },
   ];
 
-  const userTypeItems = [
-    {
-      label: "Block",
-      key: "Block",
-    },
-    {
-      label: "UnBlock",
-      key: "UnBlock",
-    },
+  const paymentSystems = [
+    { value: "bkash", label: "Bkash" },
+    { value: "nagad", label: "Nagad" },
+    { value: "rocket", label: "Rocket" },
+    { value: "bank", label: "Bank Transfer" },
+    { value: "paypal", label: "PayPal" },
+    { value: "visa", label: "Visa/Mastercard" },
   ];
 
   useEffect(() => {
@@ -368,6 +362,19 @@ const TransectionDetails = () => {
   const pageSize = 10;
   const paginatedData = data.slice((page - 1) * pageSize, page * pageSize);
 
+  const handleSearchChange = (e) => {
+    e.preventDefault();
+    setSearchText(e.target.value);
+  };
+
+  const handleDateChange = (value) => {
+    setDateRange(value);
+  };
+
+  const handlePriceSystem = (value) => {
+    setSelectedPriceSystem(value);
+  };
+
   return (
     <div className="h-[77vh]">
       <div
@@ -407,6 +414,7 @@ const TransectionDetails = () => {
             >
               <Input
                 placeholder="Search..."
+                onChange={handleSearchChange}
                 prefix={<FiSearch size={14} color="#868FA0" />}
                 style={{
                   width: "100%",
@@ -420,23 +428,22 @@ const TransectionDetails = () => {
 
             <div>
               <Select
-                defaultValue="Date"
-                style={{
-                  width: 93,
-                  height: 40,
-                }}
-                options={items}
+                value={dateRange}
+                onChange={handleDateChange}
+                style={{ width: 100, height: 40 }}
+                options={dates}
               />
             </div>
 
             <div>
               <Select
-                defaultValue="Price System"
+                value={selectedPriceSystem}
+                onChange={handlePriceSystem}
                 style={{
                   width: 146,
                   height: 40,
                 }}
-                options={items}
+                options={paymentSystems}
               />
             </div>
           </div>

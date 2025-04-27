@@ -239,40 +239,24 @@ const EmployeeDetailsList = () => {
     return urlPage ? parseInt(urlPage, 10) : 1;
   });
   const [open, setOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState("Location");
 
   const dropdownRef = useRef();
-  const items = [
-    {
-      label: "Car",
-      key: "Car",
-    },
-    {
-      label: "Bike",
-      key: "Bike",
-    },
-    {
-      label: "Cycle",
-      key: "Cycle",
-    },
-  ];
 
-  const userTypeItems = [
-    {
-      label: "Block",
-      key: "Block",
-    },
-    {
-      label: "UnBlock",
-      key: "UnBlock",
-    },
+  const locations = [
+    { value: "London", label: "London" },
+    { value: "Dhaka", label: "Dhaka" },
+    { value: "Washington DC", label: "Washington DC" },
+    { value: "Virginia", label: "Virginia" },
+    { value: "California", label: "California" },
+    { value: "Oklahoma", label: "Oklahoma" },
   ];
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDate(false);
-        setOpen("");
-        setFilter(false);
+        setOpen(false);
       }
     };
     document.addEventListener("click", handleClickOutside);
@@ -385,6 +369,15 @@ const EmployeeDetailsList = () => {
   const pageSize = 9;
   const paginatedData = data.slice((page - 1) * pageSize, page * pageSize);
 
+  const handleSearchChange = (e) => {
+    e.preventDefault();
+    setSearchText(e.target.value);
+  };
+
+  const handleLocationChange = (value) => {
+    setSelectedLocation(value);
+  };
+
   return (
     <div className="h-[77vh]">
       <div
@@ -424,6 +417,7 @@ const EmployeeDetailsList = () => {
             >
               <Input
                 placeholder="Search..."
+                onChange={handleSearchChange}
                 prefix={<FiSearch size={14} color="#868FA0" />}
                 style={{
                   width: "100%",
@@ -437,17 +431,18 @@ const EmployeeDetailsList = () => {
 
             <div>
               <Select
-                defaultValue="Location"
+                value={selectedLocation}
+                onChange={handleLocationChange}
                 style={{
                   width: 115,
                   height: 40,
                 }}
-                options={items}
+                options={locations}
               />
             </div>
           </div>
         </div>
-        
+
         <div className="relative h-full">
           <Table
             size="small"

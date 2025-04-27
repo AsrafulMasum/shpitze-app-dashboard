@@ -169,15 +169,13 @@ const data = [
 
 const Feedback = () => {
   const [open, setOpen] = useState(false);
-  // const [dateRange, setDateRange] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [dateRange, setDateRange] = useState("Date");
+  const [reportType, setReportType] = useState("Report Type");
   const [page, setPage] = useState(() => {
     const urlPage = new URLSearchParams(window.location.search).get("page");
     return urlPage ? parseInt(urlPage, 10) : 1;
   });
-
-  const handleDateChange = (value) => {
-    setDateRange(value);
-  };
 
   const columns = [
     {
@@ -242,6 +240,18 @@ const Feedback = () => {
     },
   ];
 
+  const dates = [
+    { label: "Last 7 days", value: "last7" },
+    { label: "This Month", value: "thisMonth" },
+    { label: "Last Month", value: "lastMonth" },
+  ];
+
+  const reportTypes = [
+    { label: "Service Issue", value: "Service Issue" },
+    { label: "Payment Issue", value: "Payment Issue" },
+    { label: "Behavioral", value: "Behavioral" },
+  ];
+
   const handlePageChange = (page) => {
     setPage(page);
     const params = new URLSearchParams(window.location.search);
@@ -251,6 +261,19 @@ const Feedback = () => {
 
   const pageSize = 12;
   const paginatedData = data.slice((page - 1) * pageSize, page * pageSize);
+
+  const handleSearchChange = (e) => {
+    e.preventDefault();
+    setSearchText(e.target.value);
+  };
+
+  const handleDateChange = (value) => {
+    setDateRange(value);
+  };
+
+  const handleReportType = (value) => {
+    setReportType(value);
+  };
 
   return (
     <div className="h-[78vh]">
@@ -263,6 +286,7 @@ const Feedback = () => {
             <div className="w-[353px] h-[40px]">
               <Input
                 placeholder="Search..."
+                onChange={handleSearchChange}
                 prefix={<FiSearch size={14} color="#868FA0" />}
                 style={{
                   backgroundColor: "#FAFAFA",
@@ -272,24 +296,16 @@ const Feedback = () => {
               />
             </div>
             <Select
-              defaultValue="Date"
-              // value={dateRange}
+              value={dateRange}
               onChange={handleDateChange}
               style={{ width: 100, height: 40 }}
-              options={[
-                { label: "Last 7 days", value: "last7" },
-                { label: "This Month", value: "thisMonth" },
-                { label: "Last Month", value: "lastMonth" },
-              ]}
+              options={dates}
             />
             <Select
-              defaultValue="Report Type"
+              value={reportType}
+              onChange={handleReportType}
               style={{ width: 130, height: 40 }}
-              options={[
-                { label: "Service Issue", value: "Service Issue" },
-                { label: "Payment Issue", value: "Payment Issue" },
-                { label: "Behavioral", value: "Behavioral" },
-              ]}
+              options={reportTypes}
             />
           </div>
         </div>

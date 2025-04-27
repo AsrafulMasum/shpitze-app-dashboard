@@ -101,8 +101,8 @@ const UserDetailsModal = ({ open, setOpen }) => {
         <p className="text-[#A1A1A1] text-center text-xs leading-6 tracking-[-0.5px]">
           Do you want to cancel this booking?
         </p>
-        <div className="text-center">
-          <Link className="text-[#FE9B98] text-xs font-medium leading-6 tracking-[-0.5px]">Cancel booking</Link>
+        <div className="text-center mb-9">
+          <Link className="text-[#FE9B98] text-xs font-medium leading-6 tracking-[-0.5px] hover:text-[#FE9B98]">Cancel booking</Link>
         </div>
       </div>
     </Modal>
