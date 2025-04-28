@@ -64,7 +64,6 @@ function App() {
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/terms" element={<Terms />} />
-              {/* <Route path="/settings-profile" element={<Profile />} />  */}
 
               <Route path="/feedback" element={<Feedback />} />
             </Route>
