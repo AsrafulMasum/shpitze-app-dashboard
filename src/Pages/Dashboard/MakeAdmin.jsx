@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { CiEdit } from "react-icons/ci";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Button, Form, Input, Modal, Pagination, Select, Table } from "antd";
 import { LeftOutlined, PlusOutlined, RightOutlined } from "@ant-design/icons";
@@ -133,31 +132,46 @@ const data = [
 const SalonCategoryList = () => {
   const [openAddModel, setOpenAddModel] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+  const [deleteId, setDeleteId] = useState("");
   const [page, setPage] = useState(() => {
     const urlPage = new URLSearchParams(window.location.search).get("page");
     return urlPage ? parseInt(urlPage, 10) : 1;
   });
 
-  const handleDelete = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes",
-      cancelButtonText: "No",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
+  const dropdownRef = useRef();
+  const [form] = Form.useForm();
+
+  const handleDelete = () => {
+    console.log(deleteId);
+    setShowDelete(false);
+    // Swal.fire({
+    //   title: "Are you sure?",
+    //   icon: "warning",
+    //   showCancelButton: true,
+    //   confirmButtonColor: "#3085d6",
+    //   cancelButtonColor: "#d33",
+    //   confirmButtonText: "Yes",
+    //   cancelButtonText: "No",
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     Swal.fire({
+    //       title: "Deleted!",
+    //       text: "Your file has been deleted.",
+    //       icon: "success",
+    //       showConfirmButton: false,
+    //       timer: 1500,
+    //     });
+    //   }
+    // });
+  };
+
+  const handleAddAdmin = async () => {
+    try {
+      const values = await form.validateFields();
+      console.log(values);
+    } catch (error) {
+      console.log("Validation Failed:", error);
+    }
   };
 
   const columns = [
@@ -202,6 +216,7 @@ const SalonCategoryList = () => {
           <FaRegTrashAlt
             onClick={() => {
               setShowDelete(true);
+              setDeleteId(record?.key);
             }}
             size={20}
           />
@@ -353,11 +368,11 @@ const SalonCategoryList = () => {
             {`Add new Admin`}
           </h1>
 
-          <Form>
+          <Form form={form}>
             <div>
               <p className="text-[#6D6D6D] py-1">Name</p>
               <Form.Item
-                name="title"
+                name="name"
                 rules={[
                   {
                     required: true,
@@ -374,7 +389,7 @@ const SalonCategoryList = () => {
             <div>
               <p className="text-[#6D6D6D] py-1">Email </p>
               <Form.Item
-                name="title"
+                name="email"
                 rules={[
                   {
                     required: true,
@@ -389,22 +404,24 @@ const SalonCategoryList = () => {
               </Form.Item>
             </div>
             <div style={{ width: "100%" }}>
-              <p className="text-[#6D6D6D] py-1">type </p>
-              <Select
-                placeholder="Select admin type"
-                style={{
-                  width: "100%",
-                  height: 40,
-                }}
-              >
-                <Option value="super-admin">Super Admin</Option>
-                <Option value="admin">Admin</Option>
-              </Select>
+              <p className="text-[#6D6D6D] py-1">Admin type </p>
+              <Form.Item name="adminType">
+                <Select
+                  placeholder="Select admin type"
+                  style={{
+                    width: "100%",
+                    height: 40,
+                  }}
+                >
+                  <Option value="super-admin">Super Admin</Option>
+                  <Option value="admin">Admin</Option>
+                </Select>
+              </Form.Item>
             </div>
 
             <div className="mt-5">
               <p className="text-[#6D6D6D] py-1">Password </p>
-              <Form
+              <Form.Item
                 name="title"
                 rules={[
                   {
@@ -417,18 +434,21 @@ const SalonCategoryList = () => {
                   className="w-[100%] border outline-none px-3 py-[10px]"
                   type="text"
                 />
-              </Form>
+              </Form.Item>
             </div>
 
             <div className="text-center mt-6">
-              <button className="bg-[#BB6D42] px-6 py-3 w-full text-[#FEFEFE] rounded-md">
+              <button
+                onClick={handleAddAdmin}
+                className="bg-[#BB6D42] px-6 py-3 w-full text-[#FEFEFE] rounded-md"
+              >
                 Create Admin
               </button>
             </div>
           </Form>
         </div>
       </Modal>
-      
+
       <Modal
         centered
         open={showDelete}
@@ -444,7 +464,7 @@ const SalonCategoryList = () => {
             Do you want to delete this content ?
           </p>
           <button
-            // onClick={handeldelete}
+            onClick={handleDelete}
             className="bg-[#BB6D42] py-2 px-5 text-white rounded-md"
           >
             Confirm
