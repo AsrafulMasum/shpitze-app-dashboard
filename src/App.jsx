@@ -13,7 +13,6 @@ import ChangePassword from "./Pages/Dashboard/ChangePassword";
 import ForgotPassword from "./Pages/Auth/ForgotPassword";
 import ProviderDetailsList from "../src/Pages/Dashboard/ProviderDetailsList";
 import AdminProfile from "./Pages/Dashboard/AdminProfile";
-import About from "./Pages/Dashboard/Settings/About";
 import Feedback from "./Pages/Dashboard/Feedback";
 import EmployeeDetailsList from "./Pages/Dashboard/EmployeeDetailsList";
 import Category from "./Pages/Dashboard/Category";
@@ -24,6 +23,7 @@ import AboutUs from "./Pages/Dashboard/AboutUs";
 import FAQ from "./Pages/Dashboard/FAQ";
 import PrivacyPolicy from "./Pages/Dashboard/PrivacyPolicy";
 import Terms from "./Pages/Dashboard/Terms";
+import Notification from "./Pages/Dashboard/Notification";
 
 function App() {
   return (
@@ -55,12 +55,12 @@ function App() {
               <Route path="/aboutUs" element={<AboutUs />} />
               <Route path="/make-admin" element={<MakeAdmin />} />
               <Route path="/admin-profile" element={<AdminProfile />} />
+              <Route path="/notification" element={<Notification />} />
 
               <Route
                 path="/setting-change-password"
                 element={<ChangePassword />}
               />
-              <Route path="/about" element={<About />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/terms" element={<Terms />} />

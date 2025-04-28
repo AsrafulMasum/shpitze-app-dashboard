@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button, Pagination } from "antd";
 import Swal from "sweetalert2";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 const data = [
   {
@@ -165,25 +166,12 @@ const Notification = () => {
   const [booking, setBooking] = useState("Booking Date");
   const [status, setStatus] = useState("Status");
   const [salon, setSalon] = useState("Salon");
-  const [page, setPage] = useState(
-    new URLSearchParams(window.location.search).get("page") || 1
-  );
+  const [page, setPage] = useState(() => {
+    const urlPage = new URLSearchParams(window.location.search).get("page");
+    return urlPage ? parseInt(urlPage, 10) : 1;
+  });
 
   const dropdownRef = useRef();
-  const items = [
-    {
-      label: "Car",
-      key: "Car",
-    },
-    {
-      label: "Bike",
-      key: "Bike",
-    },
-    {
-      label: "Cycle",
-      key: "Cycle",
-    },
-  ];
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -210,9 +198,7 @@ const Notification = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDate(false);
         setOpen("");
-        setFilter(false);
       }
     };
     document.addEventListener("click", handleClickOutside);
@@ -246,9 +232,12 @@ const Notification = () => {
     window.history.pushState(null, "", `?${params.toString()}`);
   };
 
+  const pageSize = 9;
+  const paginatedData = data.slice((page - 1) * pageSize, page * pageSize);
+
   return (
-    <div>
-      <div
+    <div className="h-[86vh]">
+      <div className="relative h-full"
         style={{
           background: "white",
           padding: "20px",
@@ -280,11 +269,11 @@ const Notification = () => {
                 height: "40px",
 
                 borderRadius: "8px",
-                border: "2px solid #DBB162",
+                border: "2px solid #BB6D42",
 
                 background: "white",
 
-                color: "#DBB162",
+                color: "#BB6D42",
                 fontWeight: "400",
                 fontSize: 14,
               }}
@@ -358,7 +347,7 @@ const Notification = () => {
               <p
                 style={{
                   fontSize: 16,
-                  color: "#DBB162",
+                  color: "#BB6D42",
                 }}
               >
                 View
@@ -429,7 +418,7 @@ const Notification = () => {
               <p
                 style={{
                   fontSize: 16,
-                  color: "#DBB162",
+                  color: "#BB6D42",
                 }}
               >
                 View
@@ -500,7 +489,7 @@ const Notification = () => {
               <p
                 style={{
                   fontSize: 16,
-                  color: "#DBB162",
+                  color: "#BB6D42",
                 }}
               >
                 View
@@ -571,7 +560,7 @@ const Notification = () => {
               <p
                 style={{
                   fontSize: 16,
-                  color: "#DBB162",
+                  color: "#BB6D42",
                 }}
               >
                 View
@@ -642,7 +631,7 @@ const Notification = () => {
               <p
                 style={{
                   fontSize: 16,
-                  color: "#DBB162",
+                  color: "#BB6D42",
                 }}
               >
                 View
@@ -650,8 +639,40 @@ const Notification = () => {
             </div>
           </div>
         </div>
-        <div className="text-center py-10">
-          <Pagination align="center" defaultCurrent={1} total={50} />
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+          <Pagination
+            current={page}
+            pageSize={pageSize}
+            total={data.length}
+            onChange={handlePageChange}
+            showSizeChanger={false}
+            size="small"
+            itemRender={(pageNum, type, originalElement) => {
+              if (type === "prev") {
+                return (
+                  <a
+                    className="hover:text-[#333333]"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
+                    <LeftOutlined />
+                    <span className="mr-2">Previous</span>
+                  </a>
+                );
+              }
+              if (type === "next") {
+                return (
+                  <a
+                    className="hover:text-[#333333]"
+                    style={{ display: "flex", alignItems: "center", gap: 4 }}
+                  >
+                    <span className="ml-2">Next</span>
+                    <RightOutlined />
+                  </a>
+                );
+              }
+              return originalElement;
+            }}
+          />
         </div>
       </div>
     </div>
