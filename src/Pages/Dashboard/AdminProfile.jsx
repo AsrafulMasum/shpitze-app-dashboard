@@ -180,9 +180,9 @@ const AdminProfile = () => {
                 style={{
                   fontSize: 16,
                   fontWeight: 500,
-                  color: isEdit ? "#F27405" : "#818181",
+                  color: isEdit ? "#BB6D42" : "#818181",
                   cursor: "pointer",
-                  borderBottom: isEdit ? "3px solid #F27405" : "none",
+                  borderBottom: isEdit ? "3px solid #BB6D42" : "none",
                   padding: "6px 0px",
                 }}
               >
@@ -193,9 +193,9 @@ const AdminProfile = () => {
                 style={{
                   fontSize: 16,
                   fontWeight: 500,
-                  color: isEdit ? "#818181" : "#F27405",
+                  color: isEdit ? "#818181" : "#BB6D42",
                   cursor: "pointer",
-                  borderBottom: isEdit ? "none" : "3px solid #F27405",
+                  borderBottom: isEdit ? "none" : "3px solid #BB6D42",
                   padding: "6px 0px",
                 }}
               >
@@ -328,7 +328,7 @@ const AdminProfile = () => {
                     style={{
                       height: 44,
                       width: 150,
-                      backgroundColor: "#F27405",
+                      backgroundColor: "#BB6D42",
                       color: "white",
                       borderRadius: "8px",
                       fontWeight: 500,
@@ -525,7 +525,7 @@ const AdminProfile = () => {
                           style={{
                             height: 44,
                             width: 150,
-                            backgroundColor: "#F27405",
+                            backgroundColor: "#BB6D42",
                             color: "white",
                             borderRadius: "8px",
                             fontWeight: 500,

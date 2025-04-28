@@ -16,7 +16,7 @@ const UpdatePassword = () => {
       showDenyButton: false,
       showCancelButton: false,
       confirmButtonText: "Confirm",
-      confirmButtonColor: "#F27405",
+      confirmButtonColor: "#BB6D42",
     }).then((result) => {
       if (result.isConfirmed) {
         navigate("/");
