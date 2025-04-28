@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Button, Pagination, Table } from "antd";
+import { Button, Form, Input, Modal, Pagination, Table } from "antd";
 import { LeftOutlined, PlusOutlined, RightOutlined } from "@ant-design/icons";
 import UserDetailsModal from "../../Components/Dashboard/UserDetailsModal";
 import edit from "../../assets/edit.png";
@@ -89,6 +89,9 @@ const SubCategory = () => {
     return urlPage ? parseInt(urlPage, 10) : 1;
   });
   const [open, setOpen] = useState(false);
+  const [openAddModel, setOpenAddModel] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
 
   const dropdownRef = useRef();
   const items = [
@@ -159,11 +162,17 @@ const SubCategory = () => {
             paddingRight: "46px",
           }}
         >
-          <button className="bg-[#F9F9F9] w-10 h-8 flex justify-center items-center rounded-md">
+          <button
+            onClick={() => setOpenEditModal(true)}
+            className="bg-[#F9F9F9] w-10 h-8 flex justify-center items-center rounded-md"
+          >
             <img src={edit} alt="" />
           </button>
 
-          <button className="bg-[#F9F9F9] w-10 h-8 flex justify-center items-center rounded-md">
+          <button
+            onClick={() => setShowDelete(true)}
+            className="bg-[#F9F9F9] w-10 h-8 flex justify-center items-center rounded-md"
+          >
             <img src={deleteicon} alt="" />
           </button>
         </div>
@@ -211,6 +220,7 @@ const SubCategory = () => {
 
           <div>
             <Button
+              onClick={() => setOpenAddModel(true)}
               style={{
                 width: "177px",
                 height: "40px",
@@ -283,6 +293,152 @@ const SubCategory = () => {
         </div>
       </div>
       <UserDetailsModal open={open} setOpen={setOpen} />
+      <Modal
+        centered
+        open={openEditModal}
+        onCancel={() => {
+          setOpenEditModal(false);
+        }}
+        width={500}
+        footer={false}
+      >
+        <div className="p-6 ">
+          <h1
+            className="font-semibold text-black text-xl"
+            style={{ marginBottom: "12px" }}
+          >
+            {`Edit sub-category`}
+          </h1>
+
+          <Form>
+            <div>
+              <p className="text-[#6D6D6D] py-1">Category Name</p>
+              <Form.Item
+                name="title"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input Package Name",
+                  },
+                ]}
+              >
+                <Input
+                  className="w-[100%] border outline-none px-3 py-[10px]"
+                  type="text"
+                />
+              </Form.Item>
+            </div>
+            <div>
+              <p className="text-[#6D6D6D] py-1">Sub-category Name </p>
+              <Form.Item
+                name="title"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input Package Name",
+                  },
+                ]}
+              >
+                <Input
+                  className="w-[100%] border outline-none px-3 py-[10px]"
+                  type="text"
+                />
+              </Form.Item>
+            </div>
+
+            <div className="text-center mt-6">
+              <button className="bg-[#BB6D42] px-6 py-3 w-full text-[#FEFEFE] rounded-md">
+                Edit sub-category
+              </button>
+            </div>
+          </Form>
+        </div>
+      </Modal>
+
+      <Modal
+        centered
+        open={openAddModel}
+        onCancel={() => {
+          setOpenAddModel(false);
+        }}
+        width={500}
+        footer={false}
+      >
+        <div className="p-6 ">
+          <h1
+            className="font-semibold text-black text-xl"
+            style={{ marginBottom: "12px" }}
+          >
+            {`Add sub-category`}
+          </h1>
+
+          <Form>
+            <div>
+              <p className="text-[#6D6D6D] py-1">Category Name</p>
+              <Form.Item
+                name="title"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input Package Name",
+                  },
+                ]}
+              >
+                <Input
+                  className="w-[100%] border outline-none px-3 py-[10px]"
+                  type="text"
+                />
+              </Form.Item>
+            </div>
+            <div>
+              <p className="text-[#6D6D6D] py-1">Sub-category Name </p>
+              <Form.Item
+                name="title"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input Package Name",
+                  },
+                ]}
+              >
+                <Input
+                  className="w-[100%] border outline-none px-3 py-[10px]"
+                  type="text"
+                />
+              </Form.Item>
+            </div>
+
+            <div className="text-center mt-6">
+              <button className="bg-[#BB6D42] px-6 py-3 w-full text-[#FEFEFE] rounded-md">
+                Add sub-category
+              </button>
+            </div>
+          </Form>
+        </div>
+      </Modal>
+
+      <Modal
+        centered
+        open={showDelete}
+        onCancel={() => setShowDelete(false)}
+        width={400}
+        footer={false}
+      >
+        <div className="p-6 text-center">
+          <p className="text-[#D93D04] text-center font-semibold">
+            Are you sure !
+          </p>
+          <p className="pt-4 pb-12 text-center">
+            Do you want to delete this content ?
+          </p>
+          <button
+            // onClick={handeldelete}
+            className="bg-[#BB6D42] py-2 px-5 text-white rounded-md"
+          >
+            Confirm
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };
