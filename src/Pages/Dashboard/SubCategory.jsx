@@ -110,7 +110,7 @@ const SubCategory = () => {
     };
   }, []);
 
-  const handleAddSUbCategory = async () => {
+  const handleAddSubCategory = async () => {
     try {
       const values = await form.validateFields();
       console.log(values);
@@ -365,7 +365,7 @@ const SubCategory = () => {
 
             <div className="text-center mt-6">
               <button
-                onClick={handleAddSUbCategory}
+                onClick={handleAddSubCategory}
                 className="bg-[#BB6D42] px-6 py-3 w-full text-[#FEFEFE] rounded-md"
               >
                 Add sub-category
