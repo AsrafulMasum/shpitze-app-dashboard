@@ -5,123 +5,121 @@ import { LeftOutlined, PlusOutlined, RightOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
-import Swal from "sweetalert2";
-
 const data = [
   {
-    key: "1",
+    _id: "1",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "2",
+    _id: "2",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "3",
+    _id: "3",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "4",
+    _id: "4",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "5",
+    _id: "5",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "6",
+    _id: "6",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "7",
+    _id: "7",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "8",
+    _id: "8",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "9",
+    _id: "9",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "10",
+    _id: "10",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "11",
+    _id: "11",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "12",
+    _id: "12",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "13",
+    _id: "13",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "14",
+    _id: "14",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "15",
+    _id: "15",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "16",
+    _id: "16",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
     admin_type: "Super admin",
   },
   {
-    key: "17",
+    _id: "17",
 
     email: "asad@gmail.com",
     admin_name: "Asad",
@@ -144,25 +142,6 @@ const SalonCategoryList = () => {
   const handleDelete = () => {
     console.log(deleteId);
     setShowDelete(false);
-    // Swal.fire({
-    //   title: "Are you sure?",
-    //   icon: "warning",
-    //   showCancelButton: true,
-    //   confirmButtonColor: "#3085d6",
-    //   cancelButtonColor: "#d33",
-    //   confirmButtonText: "Yes",
-    //   cancelButtonText: "No",
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     Swal.fire({
-    //       title: "Deleted!",
-    //       text: "Your file has been deleted.",
-    //       icon: "success",
-    //       showConfirmButton: false,
-    //       timer: 1500,
-    //     });
-    //   }
-    // });
   };
 
   const handleAddAdmin = async () => {
@@ -216,7 +195,7 @@ const SalonCategoryList = () => {
           <FaRegTrashAlt
             onClick={() => {
               setShowDelete(true);
-              setDeleteId(record?.key);
+              setDeleteId(record?._id);
             }}
             size={20}
           />

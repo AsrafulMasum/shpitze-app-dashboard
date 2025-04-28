@@ -7,77 +7,77 @@ import deleteicon from "../../assets/delete.png";
 
 const data = [
   {
-    key: "1",
+    _id: "1",
     serial: 1,
     category: "Dental care",
   },
   {
-    key: "2",
+    _id: "2",
     serial: 2,
     category: "Dental care",
   },
   {
-    key: "3",
+    _id: "3",
     serial: 3,
     category: "Dental care",
   },
   {
-    key: "4",
+    _id: "4",
     serial: 4,
     category: "Dental care",
   },
   {
-    key: "5",
+    _id: "5",
     serial: 5,
     category: "Dental care",
   },
   {
-    key: "6",
+    _id: "6",
     serial: 6,
     category: "Dental care",
   },
   {
-    key: "7",
+    _id: "7",
     serial: 7,
     category: "Dental care",
   },
   {
-    key: "8",
+    _id: "8",
     serial: 8,
     category: "Dental care",
   },
   {
-    key: "9",
+    _id: "9",
     serial: 9,
     category: "Dental care",
   },
   {
-    key: "10",
+    _id: "10",
     serial: 10,
     category: "Dental care",
   },
   {
-    key: "11",
+    _id: "11",
     serial: 11,
     category: "Dental care",
   },
   {
-    key: "12",
+    _id: "12",
     serial: 12,
     category: "Dental care",
   },
   {
-    key: "13",
+    _id: "13",
     serial: 13,
     category: "Dental care",
   },
   {
-    key: "14",
+    _id: "14",
     serial: 14,
     category: "Dental care",
   },
   {
-    key: "15",
+    _id: "15",
     serial: 1,
     category: "Dental care",
   },
@@ -92,29 +92,16 @@ const SubCategory = () => {
   const [openAddModel, setOpenAddModel] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
+  const [deleteId, setDeleteId] = useState("");
+  const [editID, seteditID] = useState("");
 
   const dropdownRef = useRef();
-  const items = [
-    {
-      label: "Car",
-      key: "Car",
-    },
-    {
-      label: "Bike",
-      key: "Bike",
-    },
-    {
-      label: "Cycle",
-      key: "Cycle",
-    },
-  ];
+  const [form] = Form.useForm();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDate(false);
-        setOpen("");
-        setFilter(false);
+        setOpen(false);
       }
     };
     document.addEventListener("click", handleClickOutside);
@@ -122,6 +109,29 @@ const SubCategory = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  const handleAddSUbCategory = async () => {
+    try {
+      const values = await form.validateFields();
+      console.log(values);
+    } catch (error) {
+      console.log("Validation Failed:", error);
+    }
+  };
+
+  const handleUpdate = async () => {
+    try {
+      const values = await form.validateFields();
+      console.log(values);
+    } catch (error) {
+      console.log("Validation Failed:", error);
+    }
+  };
+
+  const handleDelete = () => {
+    console.log(deleteId);
+    setShowDelete(false);
+  };
 
   const columns = [
     {
@@ -163,14 +173,20 @@ const SubCategory = () => {
           }}
         >
           <button
-            onClick={() => setOpenEditModal(true)}
+            onClick={() => {
+              setOpenEditModal(true);
+              seteditID(record?._id);
+            }}
             className="bg-[#F9F9F9] w-10 h-8 flex justify-center items-center rounded-md"
           >
             <img src={edit} alt="" />
           </button>
 
           <button
-            onClick={() => setShowDelete(true)}
+            onClick={() => {
+              setShowDelete(true);
+              setDeleteId(record?._id);
+            }}
             className="bg-[#F9F9F9] w-10 h-8 flex justify-center items-center rounded-md"
           >
             <img src={deleteicon} alt="" />
@@ -293,67 +309,6 @@ const SubCategory = () => {
         </div>
       </div>
       <UserDetailsModal open={open} setOpen={setOpen} />
-      <Modal
-        centered
-        open={openEditModal}
-        onCancel={() => {
-          setOpenEditModal(false);
-        }}
-        width={500}
-        footer={false}
-      >
-        <div className="p-6 ">
-          <h1
-            className="font-semibold text-black text-xl"
-            style={{ marginBottom: "12px" }}
-          >
-            {`Edit sub-category`}
-          </h1>
-
-          <Form>
-            <div>
-              <p className="text-[#6D6D6D] py-1">Category Name</p>
-              <Form.Item
-                name="title"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input Package Name",
-                  },
-                ]}
-              >
-                <Input
-                  className="w-[100%] border outline-none px-3 py-[10px]"
-                  type="text"
-                />
-              </Form.Item>
-            </div>
-            <div>
-              <p className="text-[#6D6D6D] py-1">Sub-category Name </p>
-              <Form.Item
-                name="title"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input Package Name",
-                  },
-                ]}
-              >
-                <Input
-                  className="w-[100%] border outline-none px-3 py-[10px]"
-                  type="text"
-                />
-              </Form.Item>
-            </div>
-
-            <div className="text-center mt-6">
-              <button className="bg-[#BB6D42] px-6 py-3 w-full text-[#FEFEFE] rounded-md">
-                Edit sub-category
-              </button>
-            </div>
-          </Form>
-        </div>
-      </Modal>
 
       <Modal
         centered
@@ -372,11 +327,11 @@ const SubCategory = () => {
             {`Add sub-category`}
           </h1>
 
-          <Form>
+          <Form form={form}>
             <div>
               <p className="text-[#6D6D6D] py-1">Category Name</p>
               <Form.Item
-                name="title"
+                name="categoryName"
                 rules={[
                   {
                     required: true,
@@ -393,7 +348,7 @@ const SubCategory = () => {
             <div>
               <p className="text-[#6D6D6D] py-1">Sub-category Name </p>
               <Form.Item
-                name="title"
+                name="subCategoryName"
                 rules={[
                   {
                     required: true,
@@ -409,8 +364,76 @@ const SubCategory = () => {
             </div>
 
             <div className="text-center mt-6">
-              <button className="bg-[#BB6D42] px-6 py-3 w-full text-[#FEFEFE] rounded-md">
+              <button
+                onClick={handleAddSUbCategory}
+                className="bg-[#BB6D42] px-6 py-3 w-full text-[#FEFEFE] rounded-md"
+              >
                 Add sub-category
+              </button>
+            </div>
+          </Form>
+        </div>
+      </Modal>
+
+      <Modal
+        centered
+        open={openEditModal}
+        onCancel={() => {
+          setOpenEditModal(false);
+        }}
+        width={500}
+        footer={false}
+      >
+        <div className="p-6 ">
+          <h1
+            className="font-semibold text-black text-xl"
+            style={{ marginBottom: "12px" }}
+          >
+            {`Edit sub-category`}
+          </h1>
+
+          <Form form={form}>
+            <div>
+              <p className="text-[#6D6D6D] py-1">Category Name</p>
+              <Form.Item
+                name="categoryName"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input Package Name",
+                  },
+                ]}
+              >
+                <Input
+                  className="w-[100%] border outline-none px-3 py-[10px]"
+                  type="text"
+                />
+              </Form.Item>
+            </div>
+            <div>
+              <p className="text-[#6D6D6D] py-1">Sub-category Name </p>
+              <Form.Item
+                name="subCategoryName"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input Package Name",
+                  },
+                ]}
+              >
+                <Input
+                  className="w-[100%] border outline-none px-3 py-[10px]"
+                  type="text"
+                />
+              </Form.Item>
+            </div>
+
+            <div className="text-center mt-6">
+              <button
+                onClick={handleUpdate}
+                className="bg-[#BB6D42] px-6 py-3 w-full text-[#FEFEFE] rounded-md"
+              >
+                Edit sub-category
               </button>
             </div>
           </Form>
@@ -432,7 +455,7 @@ const SubCategory = () => {
             Do you want to delete this content ?
           </p>
           <button
-            // onClick={handeldelete}
+            onClick={handleDelete}
             className="bg-[#BB6D42] py-2 px-5 text-white rounded-md"
           >
             Confirm
