@@ -80,7 +80,7 @@ const PrivacyPolicy = () => {
             fontSize: 14,
           }}
         >
-          Save Changes
+          Save & Changes
         </button>
       </div>
     </div>

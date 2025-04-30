@@ -162,7 +162,6 @@ const TotalSellerChart = ({ barColor }) => {
           <p
             style={{
               cursor: "pointer",
-              color: "#717171",
               border: "1px solid #636363",
               borderRadius: "4px",
               padding: "4px",
